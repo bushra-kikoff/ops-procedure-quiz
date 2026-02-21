@@ -1,0 +1,2529 @@
+[
+  {
+    "title": "Account Closure Procedures",
+    "cx_lifecycle": "Offboarding",
+    "difficulty": "Difficulty: Hard",
+    "difficulty_short": "Hard",
+    "filename": "account-closure-quiz.html",
+    "questions": [
+      {
+        "type": "scenario",
+        "question": "A customer says they lost their job and needs to cancel immediately. What should you do?",
+        "options": [
+          "Offer them a discount to stay",
+          "Skip the discount offer and proceed directly to manual closure",
+          "Transfer them to a retention specialist",
+          "Ask them to try Kikoff for one more month"
+        ],
+        "correct": 1,
+        "explanation": "Per procedures: when a customer states they lost their job, you should skip the discount offer and proceed directly to manual closure. Respect their financial hardship.",
+        "category": "Closure Flow"
+      },
+      {
+        "type": "mc",
+        "question": "Which macro should you use when a customer accepts a discount offer to keep their account?",
+        "options": [
+          "#Kikoff::CA Offboarding::Close CA",
+          "#Kikoff::CA Offboarding::Discount Accepted",
+          "#Kikoff::CA Offboarding::Manual Closure",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "When a customer accepts the discount offer, use the #Kikoff::CA Offboarding::Discount Accepted macro.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer has a CA account with both a CBL and SC. Which closure macro do you use?",
+        "options": [
+          "#Kikoff::CA Offboarding::Close CA",
+          "#Kikoff::CA Offboarding::Close CA CBL",
+          "#Kikoff::CA Offboarding::Close CA SC",
+          "#Kikoff::CA Offboarding::Close CA CBL SC"
+        ],
+        "correct": 3,
+        "explanation": "When a customer has CA + CBL + SC, you need to use #Kikoff::CA Offboarding::Close CA CBL SC to properly close all products.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "Before offering a discount during an account closure request, what should you do first?",
+        "options": [
+          "Check if the customer is within their grace period",
+          "Educate the customer on the value of their plan",
+          "Ask why they want to cancel multiple times",
+          "Transfer to a supervisor"
+        ],
+        "correct": 1,
+        "explanation": "The first step in the closure flow is to educate the customer on the value of their plan before offering any discounts.",
+        "category": "Closure Flow"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer says 'I need every penny I have' and wants to cancel. What does this indicate?",
+        "options": [
+          "They want a better deal — offer a discount",
+          "They're just testing you — push back",
+          "Financial hardship — skip discount, proceed to closure",
+          "They need to speak with a manager"
+        ],
+        "correct": 2,
+        "explanation": "Statements like 'I need every penny' indicate financial hardship. Per procedures, skip the discount offer and proceed directly to closure.",
+        "category": "Closure Flow"
+      },
+      {
+        "type": "mc",
+        "question": "A customer only has a Credit Account (no CBL or SC). Which closure macro should you use?",
+        "options": [
+          "#Kikoff::CA Offboarding::Close CA",
+          "#Kikoff::CA Offboarding::Close CA CBL",
+          "#Kikoff::CA Offboarding::Close CA SC",
+          "#Kikoff::CA Offboarding::Manual Closure"
+        ],
+        "correct": 0,
+        "explanation": "For a customer with only a CA (no CBL, no SC), use #Kikoff::CA Offboarding::Close CA.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What should you do after confirming account closure?",
+        "options": [
+          "Wait for the customer to call back",
+          "Send a closure confirmation and mark the ticket as solved",
+          "Transfer to T3 for review",
+          "Do nothing — the system handles it automatically"
+        ],
+        "correct": 1,
+        "explanation": "After confirming closure, send a closure confirmation and mark the ticket as solved.",
+        "category": "Closure Flow"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer wants to close their CA but still has an open SC with a pending transaction. What should you do?",
+        "options": [
+          "Close everything at once using Close CA CBL SC",
+          "Close the CA first, then handle SC closure separately after pending transactions resolve",
+          "Tell the customer to come back later",
+          "Escalate to T3 immediately"
+        ],
+        "correct": 1,
+        "explanation": "If unable to close the SC due to pending transactions, handle SC closure separately. Close the CA first and address the SC once pending transactions clear.",
+        "category": "Closure Flow"
+      },
+      {
+        "type": "mc",
+        "question": "Which macro is used for educating Premium or Ultimate plan customers about their plan value during a closure request?",
+        "options": [
+          "#Kikoff::CA Offboarding::Close Acc Educate Basic",
+          "#Kikoff::CA Offboarding::Close Acc Educate PremUlt",
+          "#Kikoff::CA Offboarding::Discount Accepted",
+          "#Kikoff::CA Offboarding::Close Account Call Follow-Up"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA Offboarding::Close Acc Educate PremUlt when educating Premium or Ultimate customers about the value of their plan.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer wants to cancel but you sense they might stay if offered a discount. They haven't mentioned financial hardship. What's the correct flow?",
+        "options": [
+          "Skip the education and go straight to the discount",
+          "Educate on plan value first, then offer a discount if they still want to cancel",
+          "Close the account immediately — don't waste their time",
+          "Transfer to a retention specialist"
+        ],
+        "correct": 1,
+        "explanation": "The correct flow is: first educate on plan value, then offer a discount if appropriate. Only skip the discount offer if the customer states financial hardship.",
+        "category": "Closure Flow"
+      }
+    ]
+  },
+  {
+    "title": "Fraud Claims Handling",
+    "cx_lifecycle": "Offboarding",
+    "difficulty": "Difficulty: Medium",
+    "difficulty_short": "Med",
+    "filename": "fraud-claims-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is the first thing you should do when a customer calls with a fraud claim?",
+        "options": [
+          "Immediately close their account",
+          "Verify the customer's identity",
+          "Send them an email",
+          "Transfer to a manager"
+        ],
+        "correct": 1,
+        "explanation": "Always verify the customer's identity first before processing any fraud claims.",
+        "category": "Fraud Process"
+      },
+      {
+        "type": "mc",
+        "question": "You search AdminTool and can't find an account for the fraud claimant. What macro do you use?",
+        "options": [
+          "#Kikoff::CA Offboarding::Fraud Claim Duplicate Account",
+          "#Kikoff::CA Offboarding::Not Fraud",
+          "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
+          "#Kikoff::CA Offboarding::Fraud Escalated"
+        ],
+        "correct": 2,
+        "explanation": "When no account is found for the claimant, use #Kikoff::CA Offboarding::Fraud Claim No Account Found.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "After investigating, you determine it's NOT fraud. What macro should you apply?",
+        "options": [
+          "#Kikoff::CA Offboarding::Fraud Claim Voice Script",
+          "#Kikoff::CA Offboarding::Fraud Escalated",
+          "#Kikoff::CA Offboarding::Not Fraud",
+          "#Kikoff::CA Offboarding::Internal Note Fraud Escalation"
+        ],
+        "correct": 2,
+        "explanation": "If the investigation determines it's not fraud, apply #Kikoff::CA Offboarding::Not Fraud.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A fraud case is too complex for you to handle. What should you do?",
+        "options": [
+          "Close the account immediately",
+          "Tell the customer to contact their bank",
+          "Escalate using Fraud Escalated macro and Internal Note Fraud Escalation",
+          "Ask the customer to call back later"
+        ],
+        "correct": 2,
+        "explanation": "Complex fraud cases should be escalated using the Fraud Escalated macro with an Internal Note Fraud Escalation for tracking.",
+        "category": "Escalation"
+      },
+      {
+        "type": "mc",
+        "question": "A fraud claimant appears to have a duplicate account. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
+          "#Kikoff::CA Offboarding::Fraud Claim Duplicate Account",
+          "#Kikoff::CA Offboarding::Not Fraud",
+          "#Kikoff::CA Offboarding::Fraud Claim Voice Script"
+        ],
+        "correct": 1,
+        "explanation": "When a duplicate account is found during a fraud investigation, use #Kikoff::CA Offboarding::Fraud Claim Duplicate Account.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What is the correct order of steps in the fraud claims workflow?",
+        "options": [
+          "Close account → Authenticate → Investigate",
+          "Authenticate → Search AdminTool → Determine fraud/not fraud → Apply macro",
+          "Apply macro → Authenticate → Search AdminTool",
+          "Search AdminTool → Send email → Close account"
+        ],
+        "correct": 1,
+        "explanation": "The correct workflow is: Authenticate the customer → Search AdminTool → Determine if it's fraud or not → Apply the appropriate macro.",
+        "category": "Fraud Process"
+      },
+      {
+        "type": "mc",
+        "question": "When handling a fraud claim via voice call, which macro should you use to follow the script?",
+        "options": [
+          "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
+          "#Kikoff::CA Offboarding::Fraud Claim Voice Script",
+          "#Kikoff::CA Offboarding::Not Fraud",
+          "#Kikoff::CA Offboarding::Fraud Escalated"
+        ],
+        "correct": 1,
+        "explanation": "For voice fraud claims, use the #Kikoff::CA Offboarding::Fraud Claim Voice Script to guide your conversation.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "After a voice fraud call, what should you send the customer?",
+        "options": [
+          "A screenshot of their account",
+          "An outbound email using the Fraud Voice Outbound Email template",
+          "Nothing — voice calls don't need follow-up",
+          "A link to reset their password"
+        ],
+        "correct": 1,
+        "explanation": "Send the customer an outbound email using the #Kikoff::CA Offboarding::Fraud Voice Outbound Email template.",
+        "category": "Fraud Process"
+      }
+    ]
+  },
+  {
+    "title": "Refund Procedures",
+    "cx_lifecycle": "Offboarding",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "refunds-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A customer requests a refund but is not eligible. What macro should you use?",
+        "options": [
+          "#Kikoff::CA Offboarding::Refund Manual Close",
+          "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible)",
+          "#Kikoff::General::T3 Escalation",
+          "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA Offboarding::Manual Closure (Refund Ineligible) and explain why they are ineligible.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer has extenuating circumstances (medical emergency, etc.). What macro applies?",
+        "options": [
+          "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible)",
+          "#Kikoff::CA Offboarding::Refund Manual Close",
+          "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request",
+          "#Kikoff::General::T2 Escalation"
+        ],
+        "correct": 2,
+        "explanation": "For extenuating circumstances, use #Kikoff::CA Offboarding::Extenuating Circumstance Refund Request.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What should you check FIRST when a customer requests a refund?",
+        "options": [
+          "Their credit score",
+          "Refund eligibility in AdminTool",
+          "How long they've been a customer",
+          "Their payment method"
+        ],
+        "correct": 1,
+        "explanation": "Always check refund eligibility in AdminTool first before proceeding with any refund-related actions.",
+        "category": "Refund Process"
+      },
+      {
+        "type": "mc",
+        "question": "A refund has been approved. Which macro do you use to process it?",
+        "options": [
+          "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible)",
+          "#Kikoff::CA Offboarding::Refund Manual Close",
+          "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request",
+          "#Kikoff::General::T2 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "For approved refunds, use #Kikoff::CA Offboarding::Refund Manual Close to process the refund.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer is pushing back hard after being told they're ineligible for a refund and demands a manager. What should you do?",
+        "options": [
+          "Give them the refund to avoid escalation",
+          "End the conversation",
+          "Escalate to T3 using the T3 Escalation macro",
+          "Tell them there's nothing else you can do"
+        ],
+        "correct": 2,
+        "explanation": "If pushback or escalation is needed, use #Kikoff::General::T3 Escalation to route to management review.",
+        "category": "Escalation"
+      }
+    ]
+  },
+  {
+    "title": "Deactivation Requests",
+    "cx_lifecycle": "Offboarding",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "deactivation-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "How is deactivation different from full account closure?",
+        "options": [
+          "They are the same thing",
+          "Deactivation disables the account without fully closing it; closure terminates everything",
+          "Deactivation only applies to the SC",
+          "Closure is temporary, deactivation is permanent"
+        ],
+        "correct": 1,
+        "explanation": "Deactivation is different from full account closure. It disables the account without fully terminating all products and history.",
+        "category": "Process Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer requests deactivation but has no active products. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA Offboarding::Deactivation Request",
+          "#Kikoff::CA Offboarding::Deactivation Request (NO Products)",
+          "#Kikoff::CA Offboarding::Deactivation Confirmation",
+          "#Kikoff::CA Offboarding::No Deactivation"
+        ],
+        "correct": 1,
+        "explanation": "If the customer has no active products, use #Kikoff::CA Offboarding::Deactivation Request (NO Products).",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What should you check before processing a deactivation request?",
+        "options": [
+          "The customer's credit score",
+          "Whether the customer has active products",
+          "The customer's location",
+          "The day of the week"
+        ],
+        "correct": 1,
+        "explanation": "Always check if the customer has active products before proceeding with deactivation, as this determines which macro to use.",
+        "category": "Process Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "After processing a deactivation request, what macro should you use to confirm?",
+        "options": [
+          "#Kikoff::CA Offboarding::Deactivation Request",
+          "#Kikoff::CA Offboarding::No Deactivation",
+          "#Kikoff::CA Offboarding::Deactivation Confirmation",
+          "#Kikoff::CA Offboarding::Close CA"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::CA Offboarding::Deactivation Confirmation to confirm the deactivation with the customer.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer asks to deactivate but you determine they actually need a full account closure instead. What should you do?",
+        "options": [
+          "Process the deactivation anyway since that's what they asked for",
+          "Use #Kikoff::CA Offboarding::No Deactivation and redirect to the account closure flow",
+          "Tell them to call back and ask for closure",
+          "Escalate to T3"
+        ],
+        "correct": 1,
+        "explanation": "If deactivation isn't the right option, use #Kikoff::CA Offboarding::No Deactivation and guide them through the appropriate account closure process.",
+        "category": "Process Knowledge"
+      }
+    ]
+  },
+  {
+    "title": "Identity Verification (IDV)",
+    "cx_lifecycle": "Onboarding",
+    "difficulty": "Difficulty: Medium",
+    "difficulty_short": "Med",
+    "filename": "idv-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A customer has a frozen credit file. What macro should you use?",
+        "options": [
+          "#Kikoff::CA Onboarding::Dead End Flow",
+          "#Kikoff::CA Onboarding::Frozen File / Credit Freeze",
+          "#Kikoff::CA Onboarding::Sent to Retry",
+          "#Kikoff::CA Onboarding::Dead End Pushback"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA Onboarding::Frozen File / Credit Freeze to guide the customer on unfreezing their credit.",
+        "category": "IDV Failures"
+      },
+      {
+        "type": "mc",
+        "question": "What does 'Dead End Flow' mean in the IDV context?",
+        "options": [
+          "The customer's account is closed",
+          "The customer cannot proceed with sign-up due to verification failure",
+          "The customer needs to pay more",
+          "The system is down"
+        ],
+        "correct": 1,
+        "explanation": "Dead End Flow means the customer cannot proceed with sign-up due to identity verification failure.",
+        "category": "IDV Failures"
+      },
+      {
+        "type": "mc",
+        "question": "A customer has an Active Duty military alert on file. What macro applies?",
+        "options": [
+          "#Kikoff::CA Onboarding::Extended Fraud Victim Alert on File",
+          "#Kikoff::CA Onboarding::Active Duty Alert on File",
+          "#Kikoff::CA Onboarding::Dead End Flow",
+          "#Kikoff::CA Onboarding::Sent to Retry"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA Onboarding::Active Duty Alert on File for customers with active military duty alerts.",
+        "category": "IDV Failures"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's IDV failure appears to be retryable. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA Onboarding::Dead End Flow",
+          "#Kikoff::CA Onboarding::Dead End Pushback",
+          "#Kikoff::CA Onboarding::Sent to Retry",
+          "#Kikoff::CA Onboarding::Frozen File / Credit Freeze"
+        ],
+        "correct": 2,
+        "explanation": "If the failure is retryable, use #Kikoff::CA Onboarding::Sent to Retry to let the customer try again.",
+        "category": "IDV Failures"
+      },
+      {
+        "type": "mc",
+        "question": "What should you always create when a customer experiences an IDV failure?",
+        "options": [
+          "A T3 escalation ticket",
+          "An IDV Fail Internal Note for tracking",
+          "A new account for the customer",
+          "A refund request"
+        ],
+        "correct": 1,
+        "explanation": "Always create an IDV Fail Internal Note (#Kikoff::CA Onboarding::IDV Fail Internal Note) for tracking and documentation.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "A customer has an Extended Fraud Victim Alert on their credit file. What macro should you use?",
+        "options": [
+          "#Kikoff::CA Onboarding::Active Duty Alert on File",
+          "#Kikoff::CA Onboarding::Dead End Flow",
+          "#Kikoff::CA Onboarding::Extended Fraud Victim Alert on File",
+          "#Kikoff::CA Onboarding::Sent to Retry"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::CA Onboarding::Extended Fraud Victim Alert on File for customers with fraud victim alerts.",
+        "category": "IDV Failures"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer using a commercial address fails IDV but could potentially pass with the right flow. Which macro should you check first?",
+        "options": [
+          "#Kikoff::CA Onboarding::Dead End Flow",
+          "#Kikoff::CA Onboarding::Commercial Address Pass",
+          "#Kikoff::CA Onboarding::Sent to Retry",
+          "#Kikoff::CA Onboarding::Frozen File / Credit Freeze"
+        ],
+        "correct": 1,
+        "explanation": "For commercial address cases, first check if they can pass using #Kikoff::CA Onboarding::Commercial Address Pass. If not, use Commercial Address Dead End Flow.",
+        "category": "IDV Failures"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer pushes back after being told they can't sign up due to IDV failure. What macro handles this?",
+        "options": [
+          "#Kikoff::CA Onboarding::Sent to Retry",
+          "#Kikoff::CA Onboarding::Dead End Pushback",
+          "#Kikoff::General::T3 Escalation",
+          "#Kikoff::CA Onboarding::IDV Fail Internal Note"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA Onboarding::Dead End Pushback when a customer pushes back on a dead end IDV failure.",
+        "category": "IDV Failures"
+      }
+    ]
+  },
+  {
+    "title": "Kikoff Plans & Onboarding",
+    "cx_lifecycle": "Onboarding",
+    "difficulty": "Difficulty: Hard",
+    "difficulty_short": "Hard",
+    "filename": "onboarding-general-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "How much does the Ultimate Plan cost per month?",
+        "options": [
+          "$15/month",
+          "$25/month",
+          "$35/month",
+          "$50/month"
+        ],
+        "correct": 2,
+        "explanation": "The Ultimate Plan costs $35/month ($420 total over 12 months).",
+        "category": "Plan Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "What is the tradeline amount for the Ultimate Plan?",
+        "options": [
+          "$1,000",
+          "$2,500",
+          "$3,500",
+          "$5,000"
+        ],
+        "correct": 2,
+        "explanation": "The Ultimate Plan has a $3,500 tradeline reported to all 3 major credit bureaus.",
+        "category": "Plan Knowledge"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer asks if they can use Kikoff Store funds to buy things outside of Kikoff. What do you tell them?",
+        "options": [
+          "Yes, it works like a debit card",
+          "Yes, but only for online purchases",
+          "No — Kikoff Store is for credit building only, not usable outside Kikoff",
+          "Yes, after 6 months"
+        ],
+        "correct": 2,
+        "explanation": "Kikoff Store purchases are for credit building ONLY. The money cannot be used outside Kikoff. It's not a card and not cash — it's a credit-building subscription.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "Which plans include rent reporting?",
+        "options": [
+          "All plans",
+          "Premium and Ultimate only",
+          "Ultimate only",
+          "None — it's a separate add-on"
+        ],
+        "correct": 1,
+        "explanation": "Rent reporting is available on Premium ($15/month) and Ultimate ($35/month) plans.",
+        "category": "Plan Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "What is the identity theft insurance coverage on the Ultimate Plan?",
+        "options": [
+          "$100,000",
+          "$500,000",
+          "$1,000,000 ($1M)",
+          "$2,000,000"
+        ],
+        "correct": 2,
+        "explanation": "The Ultimate Plan includes $1M (one million dollars) in identity theft insurance.",
+        "category": "Plan Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "What is the cost of the Basic Plan?",
+        "options": [
+          "$5/month",
+          "$10/month",
+          "Free",
+          "$15/month"
+        ],
+        "correct": 2,
+        "explanation": "The Basic Plan is free and provides a credit-building tradeline reported to all 3 bureaus.",
+        "category": "Plan Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "Does Kikoff perform a hard credit pull when customers sign up?",
+        "options": [
+          "Yes, always",
+          "Only for Ultimate plan",
+          "No, Kikoff does not perform hard credit pulls",
+          "Only for the Secured Card"
+        ],
+        "correct": 2,
+        "explanation": "Kikoff does NOT perform a hard credit pull. This is an important selling point and differentiator.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "How many credit bureaus does Kikoff report to?",
+        "options": [
+          "1 (Experian only)",
+          "2 (Experian and TransUnion)",
+          "All 3 (Equifax, Experian, TransUnion)",
+          "Varies by plan"
+        ],
+        "correct": 2,
+        "explanation": "Kikoff reports to all 3 major credit bureaus: Equifax, Experian, and TransUnion — regardless of plan level.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "Which features are exclusive to the Ultimate Plan (not available on Premium)?",
+        "options": [
+          "Rent reporting and bill reporting",
+          "Debt negotiation, credit report disputes, privacy protection, secured card access",
+          "Credit monitoring only",
+          "Basic tradeline reporting"
+        ],
+        "correct": 1,
+        "explanation": "Ultimate-exclusive features include: debt negotiation, credit report disputes, privacy protection, $1M ID theft insurance, and secured card access.",
+        "category": "Plan Knowledge"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer is having trouble signing up because their phone doesn't meet requirements. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA Onboarding::How It Works",
+          "#Kikoff::CA Onboarding::Phone Requirements",
+          "#Kikoff::CA Onboarding::Sign Up",
+          "#Kikoff::General::General Troubleshooting"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA Onboarding::Phone Requirements to address phone-related sign-up issues.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "CA Payment Procedures",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Medium",
+    "difficulty_short": "Med",
+    "filename": "ca-payments-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A customer contacts you about a recent payment and is within their grace period. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Autopay Inquiry",
+          "#Kikoff::CA::Within grace period",
+          "#Kikoff::CA::Partial payment",
+          "#Kikoff::CA::Refund not eligible"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Within grace period for customers inquiring about payments within their grace period.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer asks about their autopay schedule. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Within grace period",
+          "#Kikoff::CA::Autopay Inquiry",
+          "#Kikoff::CA::Auto-Renew Inquiry",
+          "#Kikoff::CA::Pay off CA in full/early"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Autopay Inquiry for questions about autopay schedules and settings.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's autopay failed. What should you explain to them?",
+        "options": [
+          "They need to create a new account",
+          "The specific retry timeline for autopay failures",
+          "They should switch to manual payments permanently",
+          "Their account will be closed automatically"
+        ],
+        "correct": 1,
+        "explanation": "Explain the specific retry timeline using #Kikoff::CA::Autopay Failed Retry Timeline. Autopay failures have a defined retry schedule.",
+        "category": "Payment Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to make a partial payment. What should you check first?",
+        "options": [
+          "Their credit score",
+          "Whether partial payments are available for their account",
+          "Their plan type",
+          "How long they've been a customer"
+        ],
+        "correct": 1,
+        "explanation": "Partial payments may not be available for all users. Check if the feature is available for their account before proceeding.",
+        "category": "Payment Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "What is the difference between the Auto-Renew Inquiry and Autopay Inquiry macros?",
+        "options": [
+          "They are the same thing",
+          "Auto-Renew is about plan subscription renewal; Autopay is about monthly payment scheduling",
+          "Auto-Renew is for SC; Autopay is for CA",
+          "Auto-Renew is for Premium; Autopay is for Ultimate"
+        ],
+        "correct": 1,
+        "explanation": "Auto-Renew handles plan subscription renewal questions, while Autopay handles monthly payment scheduling and automation.",
+        "category": "Payment Knowledge"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer wants to pay off their Credit Account early. They have access to the pay early feature. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Partial payment",
+          "#Kikoff::CA::Pay off CA in full/early",
+          "#Kikoff::CA::Within grace period",
+          "#Kikoff::CA::Autopay Inquiry"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Pay off CA in full/early to guide customers through the early payoff process.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer has already paid early and you need to confirm. Which macro applies?",
+        "options": [
+          "#Kikoff::CA::Pay off CA in full/early",
+          "#Kikoff::CA::Pay Early - User Paid Early",
+          "#Kikoff::CA::Within grace period",
+          "#Kikoff::CA::Partial payment"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Pay Early - User Paid Early to confirm and document that the customer has paid early.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What is the first step when handling any payment-related inquiry?",
+        "options": [
+          "Apply the macro immediately",
+          "Check the customer's credit score",
+          "Identify the payment issue and check the account status in AdminTool",
+          "Transfer to a payment specialist"
+        ],
+        "correct": 2,
+        "explanation": "Always identify the specific payment issue and check the customer's account status in AdminTool before applying any macro.",
+        "category": "Payment Knowledge"
+      }
+    ]
+  },
+  {
+    "title": "Credit Score & Reporting",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Hard",
+    "difficulty_short": "Hard",
+    "filename": "credit-score-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "How often does Kikoff report to the credit bureaus?",
+        "options": [
+          "Daily",
+          "Weekly",
+          "Once a month, typically at the beginning",
+          "Every 45 days"
+        ],
+        "correct": 2,
+        "explanation": "Kikoff reports to all 3 major credit bureaus once a month, typically at the beginning of each month.",
+        "category": "Reporting"
+      },
+      {
+        "type": "mc",
+        "question": "Which credit bureaus does Kikoff report to?",
+        "options": [
+          "Only Equifax and Experian",
+          "Only TransUnion",
+          "Equifax, Experian, and TransUnion (all 3)",
+          "Only Experian and TransUnion"
+        ],
+        "correct": 2,
+        "explanation": "Kikoff reports to all three major credit bureaus: Equifax, Experian, and TransUnion.",
+        "category": "Reporting"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer complains their score hasn't improved after 2 months. What should you do?",
+        "options": [
+          "Tell them Kikoff isn't working and they should cancel",
+          "Point them to the Credit Score tab factors, check for high utilization/negative marks on other accounts",
+          "Tell them to wait 6 more months without explanation",
+          "Immediately escalate to T3"
+        ],
+        "correct": 1,
+        "explanation": "Guide the customer to the Credit Score tab to view their credit factors. High utilization on other cards, late payments, or negative marks from other lenders can limit Kikoff's positive impact.",
+        "category": "Troubleshooting"
+      },
+      {
+        "type": "mc",
+        "question": "Does Kikoff perform a hard credit pull when customers sign up?",
+        "options": [
+          "Yes, always",
+          "Only for Ultimate plan",
+          "No, Kikoff does not perform hard credit pulls",
+          "Only for the Secured Card"
+        ],
+        "correct": 2,
+        "explanation": "Kikoff does NOT perform a hard credit pull. This is an important selling point and differentiator.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's score dropped right after signing up. What macro should you use?",
+        "options": [
+          "#Kikoff::CA::Credit Reporting Issues",
+          "#Kikoff::CA::New Account Credit Score Drop",
+          "#Kikoff::General::T3 Escalation",
+          "#Kikoff::CA::Unable to Remove from Credit Report"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::New Account Credit Score Drop. A small dip after opening a new account is normal and expected — explain this to the customer.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What is the recommended credit utilization percentage customers should maintain on other cards?",
+        "options": [
+          "Below 10%",
+          "Below 30%",
+          "Below 50%",
+          "Below 70%"
+        ],
+        "correct": 1,
+        "explanation": "Keeping credit utilization below 30% is ideal. This is a major factor in credit scores.",
+        "category": "Credit Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "Which tab in the app helps customers understand what's affecting their credit score?",
+        "options": [
+          "The Payment History tab",
+          "The Credit Score tab (Credit Factors, Usage Tracker, Problem Accounts)",
+          "The Settings tab",
+          "The Kikoff Store tab"
+        ],
+        "correct": 1,
+        "explanation": "The Credit Score tab includes Credit Factors, Usage Tracker, and Problem Accounts — all designed to help customers understand and improve their score.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "What are the 5 main credit score factors you should be aware of?",
+        "options": [
+          "Income, savings, debt, employment, age",
+          "Payment history, credit utilization, credit age, credit mix, hard inquiries",
+          "Balance, limit, payments, loans, cards",
+          "Score, report, bureau, tradeline, inquiry"
+        ],
+        "correct": 1,
+        "explanation": "The 5 main factors are: payment history, credit utilization, credit age, credit mix, and hard inquiries.",
+        "category": "Credit Knowledge"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer insists Kikoff remove their tradeline from their credit report. What macro should you use?",
+        "options": [
+          "#Kikoff::CA::Credit Reporting Issues",
+          "#Kikoff::CA::Unable to Remove from Credit Report",
+          "#Kikoff::CA::New Account Credit Score Drop",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Unable to Remove from Credit Report to explain the reporting process and why removal may not be possible.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer asks when their account activity will be reported. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Credit Score Page Credit Factors",
+          "#Kikoff::CA::Reporting Timeline",
+          "#Kikoff::CA::New Account Credit Score Drop",
+          "#Kikoff::CA::Credit Score Display Inquiry"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Reporting Timeline to explain when and how Kikoff reports to the credit bureaus.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "CA Letterhead Statements",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "letterhead-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A third party requests account information about a customer. What do you need first?",
+        "options": [
+          "The customer's email address",
+          "A Power of Authority (POA) or Verification of Loan (VoL), then escalate to T2",
+          "Nothing — just provide the information",
+          "A screenshot of their ID"
+        ],
+        "correct": 1,
+        "explanation": "Third-party requests require a POA or VoL. Follow the Third-Party Contact workflow and escalate to T2 after receiving proper authorization.",
+        "category": "Authorization"
+      },
+      {
+        "type": "mc",
+        "question": "Which letterhead template should you use for a customer who has paid off their balance?",
+        "options": [
+          "Updated Balance Letter",
+          "Paid Off Letterhead",
+          "Closure Confirmation Letter",
+          "Account Status Letter"
+        ],
+        "correct": 1,
+        "explanation": "Use the Paid Off Letterhead for customers with a $0 balance or 'Closed'/'Paid' status.",
+        "category": "Templates"
+      },
+      {
+        "type": "mc",
+        "question": "After generating a letterhead, what macro should you apply?",
+        "options": [
+          "#Kikoff::CA::Credit Reporting Issues",
+          "#Kikoff::CA::Letterhead Statement Sent",
+          "#Kikoff::General::T3 Escalation",
+          "#Kikoff::CA::Letterhead Statement Req"
+        ],
+        "correct": 1,
+        "explanation": "Apply #Kikoff::CA::Letterhead Statement Sent and attach the downloaded PDF to the response.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What are the steps to generate a letterhead via Google Docs?",
+        "options": [
+          "Download template → Fill in manually → Email to customer",
+          "Click Generate Letter Copy → Create & Fill Copy → Fill form → Create letter → Download as PDF",
+          "Copy/paste the template → Edit in Word → Upload to AdminTool",
+          "Ask T3 to generate it for you"
+        ],
+        "correct": 1,
+        "explanation": "The correct process: Click Generate Letter Copy → Create & Fill Copy → Fill in the form with customer details → Click Create letter once → Wait ~15 seconds → Verify info → Download as PDF.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "Which letterhead template is used for charged off accounts or balance updates?",
+        "options": [
+          "Paid Off Letterhead",
+          "Updated Balance Letter",
+          "Account Summary Letter",
+          "Charge-Off Confirmation Letter"
+        ],
+        "correct": 1,
+        "explanation": "Use the Updated Balance Letter for charged off accounts or when the customer needs a letter reflecting a balance update.",
+        "category": "Templates"
+      }
+    ]
+  },
+  {
+    "title": "CA Charged Off Accounts",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "charged-off-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What causes an account to become charged off?",
+        "options": [
+          "The customer cancels their subscription",
+          "The account becomes severely delinquent on payments",
+          "The customer requests a refund",
+          "The customer upgrades their plan"
+        ],
+        "correct": 1,
+        "explanation": "Charge-off happens when an account is severely delinquent — the customer has missed payments for an extended period.",
+        "category": "Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to prevent their account from being charged off. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Charge-Off Paid",
+          "#Kikoff::CA::Charge-Off Prevention Inquiry",
+          "#Kikoff::CA::Charged-off can log in",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Charge-Off Prevention Inquiry to help customers understand how to avoid a charge-off.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's account has been charged off and they've now paid the balance. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Charge-Off Prevention Inquiry",
+          "#Kikoff::CA::Charge-Off Paid",
+          "#Kikoff::CA Offboarding::Close CA",
+          "#Kikoff::CA::Charged-off can log in"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Charge-Off Paid when a charged-off account has been paid.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer with a charged-off account can still log in. Which macro should you apply?",
+        "options": [
+          "#Kikoff::CA::Charge-Off Prevention Inquiry",
+          "#Kikoff::CA::Charge-Off Paid",
+          "#Kikoff::CA::Charged-off can log in",
+          "#Kikoff::CA Onboarding::Charged-off Account can't log in"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::CA::Charged-off can log in when a customer with a charged-off account still has login access.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer with a charged-off account cannot log in. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Charged-off can log in",
+          "#Kikoff::CA::Charge-Off Paid",
+          "#Kikoff::CA Onboarding::Charged-off Account can't log in",
+          "#Kikoff::General::Login Issue Troubleshoot"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::CA Onboarding::Charged-off Account can't log in for customers who have a charged-off account and cannot access it.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Goodwill Adjustment Procedures",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "goodwill-adjustment-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is the purpose of a goodwill adjustment?",
+        "options": [
+          "To give the customer a refund",
+          "To remove negative marks from a credit report as a courtesy",
+          "To upgrade the customer's plan",
+          "To close the customer's account"
+        ],
+        "correct": 1,
+        "explanation": "Goodwill adjustments are requests to remove negative marks (like late payments) from a customer's credit report as a courtesy gesture.",
+        "category": "Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "When a customer requests a goodwill adjustment, what macro do you use first?",
+        "options": [
+          "#Kikoff::CA::Goodwill Adjustment Accepted",
+          "#Kikoff::CA::Goodwill Adjustment Request",
+          "#Kikoff::CA::Goodwill Adjustment Declined",
+          "#Kikoff::CA::Credit Reporting Issues"
+        ],
+        "correct": 1,
+        "explanation": "Start with #Kikoff::CA::Goodwill Adjustment Request to initiate the process and request necessary documentation.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer submits documents for a goodwill adjustment but they're not the right type. Which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Goodwill Adjustment Request",
+          "#Kikoff::CA::Goodwill Adjustment Ineligible Documents",
+          "#Kikoff::CA::Goodwill Adjustment Declined",
+          "#Kikoff::CA::Goodwill Adjustment Accepted"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Goodwill Adjustment Ineligible Documents to let the customer know their documents don't qualify and request the correct ones.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A goodwill adjustment has been approved after review. Which macro do you apply?",
+        "options": [
+          "#Kikoff::CA::Goodwill Adjustment Request",
+          "#Kikoff::CA::Goodwill Adjustment Documents Received",
+          "#Kikoff::CA::Goodwill Adjustment Accepted",
+          "#Kikoff::CA::Goodwill Adjustment Declined"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::CA::Goodwill Adjustment Accepted to notify the customer that the adjustment has been approved.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What is the correct workflow order for goodwill adjustments?",
+        "options": [
+          "Accept → Request docs → Review → Notify",
+          "Request → Receive docs → Review eligibility → Accept or Decline",
+          "Decline first → If customer pushes back → Accept",
+          "Escalate to T3 → Wait for decision → Notify customer"
+        ],
+        "correct": 1,
+        "explanation": "The correct workflow: Send Goodwill Adjustment Request → Receive documents → Review eligibility → Accept or Decline based on review.",
+        "category": "Process"
+      }
+    ]
+  },
+  {
+    "title": "Duplicate Account Procedures",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "duplicate-account-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "Where should you check for duplicate accounts?",
+        "options": [
+          "The customer's email",
+          "AdminTool",
+          "The credit bureaus",
+          "Zendesk tickets"
+        ],
+        "correct": 1,
+        "explanation": "Check for duplicate accounts in AdminTool to see if multiple accounts exist under the same customer.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "You've found a duplicate account. What macro should you use to request verification info?",
+        "options": [
+          "#Kikoff::CA::Duplicate Account Fixed",
+          "#Kikoff::CA::Duplicate Account Info Request",
+          "#Kikoff::CA::Zombie Account Found",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Duplicate Account Info Request to gather information needed to verify which account is the primary one.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "After resolving a duplicate account issue, which macro should you apply?",
+        "options": [
+          "#Kikoff::CA::Duplicate Account Info Request",
+          "#Kikoff::CA::Duplicate Account Fixed",
+          "#Kikoff::CA Offboarding::Close CA",
+          "#Kikoff::General::T2 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CA::Duplicate Account Fixed to confirm the duplicate has been resolved.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What information do you need to resolve a duplicate account?",
+        "options": [
+          "The customer's credit score from both accounts",
+          "Information to verify which account is the primary one",
+          "A police report",
+          "Authorization from both account holders"
+        ],
+        "correct": 1,
+        "explanation": "You need information to verify which account is the customer's primary account so the duplicate can be properly resolved.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "What is the correct workflow for handling duplicate accounts?",
+        "options": [
+          "Close both accounts and create a new one",
+          "Check AdminTool → Request verification info → Fix the duplicate → Confirm with customer",
+          "Escalate to T3 immediately",
+          "Ask the customer to delete one account themselves"
+        ],
+        "correct": 1,
+        "explanation": "The correct workflow: Check AdminTool for duplicates → Request verification info → Fix the duplicate → Confirm the resolution with the customer.",
+        "category": "Process"
+      }
+    ]
+  },
+  {
+    "title": "Zombie Account Procedures",
+    "cx_lifecycle": "Credit Account",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "zombie-account-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is a 'zombie account'?",
+        "options": [
+          "A hacked account",
+          "An account that is inactive but not properly closed",
+          "A brand new account",
+          "An account with a high balance"
+        ],
+        "correct": 1,
+        "explanation": "Zombie accounts are accounts that are inactive but were not properly closed, leaving them in a limbo state.",
+        "category": "Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "You've identified a zombie account. Which macro should you use first?",
+        "options": [
+          "#Kikoff::CA::Zombie Account Removal Request",
+          "#Kikoff::CA::Zombie Account Found",
+          "#Kikoff::CA::Zombie Account Pay Off",
+          "#Kikoff::CA::Zombie Account Removal Confirmed"
+        ],
+        "correct": 1,
+        "explanation": "Start with #Kikoff::CA::Zombie Account Found to document and address the discovered zombie account.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A zombie account has an outstanding balance. What needs to happen before removal?",
+        "options": [
+          "Nothing — just remove it",
+          "The balance may need to be paid off before removal",
+          "Wait 30 days",
+          "Transfer the balance to the active account"
+        ],
+        "correct": 1,
+        "explanation": "If a zombie account has an outstanding balance, it may need to be paid off before it can be removed. Use #Kikoff::CA::Zombie Account Pay Off.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "After a zombie account has been successfully removed, which macro should you use?",
+        "options": [
+          "#Kikoff::CA::Zombie Account Found",
+          "#Kikoff::CA::Zombie Account Removal Request",
+          "#Kikoff::CA::Zombie Account Removal Confirmed",
+          "#Kikoff::CA::Duplicate Account Fixed"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::CA::Zombie Account Removal Confirmed to confirm the zombie account has been successfully removed.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer says they closed their account months ago but it's still showing on their credit report. You check and find a zombie account. What's your first step?",
+        "options": [
+          "Tell them to dispute it with the credit bureau directly",
+          "Apply Zombie Account Found macro and investigate the situation",
+          "Immediately remove it from their credit report",
+          "Escalate to T3 without investigation"
+        ],
+        "correct": 1,
+        "explanation": "First apply #Kikoff::CA::Zombie Account Found to document the issue, then investigate whether there's a balance and proceed accordingly.",
+        "category": "Process"
+      }
+    ]
+  },
+  {
+    "title": "Login Issues & Troubleshooting",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "login-issues-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is the first thing you should try when a customer reports a login issue?",
+        "options": [
+          "Reset their password immediately",
+          "Basic troubleshooting: update app, clear cache, restart device",
+          "Escalate to T3",
+          "Create a new account for them"
+        ],
+        "correct": 1,
+        "explanation": "Always try basic troubleshooting first: update the app, clear cache, and restart the device before escalating.",
+        "category": "Troubleshooting"
+      },
+      {
+        "type": "mc",
+        "question": "A customer forgot their password. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Login Issue Troubleshoot",
+          "#Kikoff::General::Forgot Password",
+          "#Kikoff::General::Forgot Email",
+          "#Kikoff::General::Info Reset"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Forgot Password to guide the customer through the password reset process.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's password reset link isn't working. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Forgot Password",
+          "#Kikoff::General::Password reset link error",
+          "#Kikoff::General::General Troubleshooting",
+          "#Kikoff::General::Info Reset"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Password reset link error. Also check if the email went to their spam folder.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer forgot the email they used to sign up. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Forgot Password",
+          "#Kikoff::General::Password reset link error",
+          "#Kikoff::General::Forgot Email",
+          "#Kikoff::General::Login Issue Troubleshoot"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::General::Forgot Email to help the customer recover the email associated with their account.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "When should you use the Info Reset macro?",
+        "options": [
+          "When the customer wants a new password",
+          "When the customer's account information needs to be reset",
+          "When the app needs to be reinstalled",
+          "When the customer wants to change their plan"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Info Reset when the customer's account information needs to be reset to resolve access issues.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Handling Difficult Customers",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Medium",
+    "difficulty_short": "Med",
+    "filename": "negative-sentiment-quiz.html",
+    "questions": [
+      {
+        "type": "scenario",
+        "question": "An irate customer is yelling at you on a call. What is the FIRST thing you should do?",
+        "options": [
+          "Put them on hold to calm down",
+          "Tell them to stop yelling",
+          "Stay calm, empathize, and use the Irate customer macro",
+          "Immediately transfer to a supervisor"
+        ],
+        "correct": 2,
+        "explanation": "Stay calm, empathize with the customer, and never argue. Use the appropriate Irate customer macro to guide your response.",
+        "category": "De-escalation"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer mentions thoughts of self-harm during a conversation. What do you do?",
+        "options": [
+          "Continue resolving their Kikoff issue first",
+          "IMMEDIATELY follow the Self-Harm protocol — take it seriously",
+          "Tell them to call 911",
+          "End the chat and log the note"
+        ],
+        "correct": 1,
+        "explanation": "Threats or mentions of self-harm must be taken seriously. IMMEDIATELY follow the Self-Harm protocol.",
+        "category": "Safety"
+      },
+      {
+        "type": "mc",
+        "question": "What is the difference between T2 and T3 escalations?",
+        "options": [
+          "T2 = email, T3 = phone",
+          "T2 = supervisor level, T3 = management level",
+          "T2 = billing, T3 = technical",
+          "There is no difference"
+        ],
+        "correct": 1,
+        "explanation": "T2 is supervisor level escalation, T3 is management level escalation. Always try T2 first before T3.",
+        "category": "Escalation"
+      },
+      {
+        "type": "mc",
+        "question": "When escalating a ticket, what must you always include?",
+        "options": [
+          "The customer's credit score",
+          "An Escalation Note with details",
+          "A screenshot of the conversation",
+          "The customer's payment history"
+        ],
+        "correct": 1,
+        "explanation": "Always include an Escalation Note when escalating tickets. This ensures the next tier has all the context they need.",
+        "category": "Escalation"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer says 'I'm going to post about this all over social media.' How should you respond?",
+        "options": [
+          "Threaten legal action",
+          "Ignore the comment and continue",
+          "Flag as a potential complaint, empathize, and try to resolve their issue",
+          "Immediately give them whatever they want"
+        ],
+        "correct": 2,
+        "explanation": "Flag potential complaints, show empathy, and make a genuine effort to resolve the issue. Don't give in to pressure, but also don't dismiss their frustration.",
+        "category": "De-escalation"
+      },
+      {
+        "type": "mc",
+        "question": "What should you NEVER do when dealing with an irate customer?",
+        "options": [
+          "Empathize with their frustration",
+          "Argue with the customer or take it personally",
+          "Use the appropriate macro",
+          "Offer to escalate"
+        ],
+        "correct": 1,
+        "explanation": "NEVER argue with the customer or take their anger personally. Stay professional, empathize, and focus on resolution.",
+        "category": "De-escalation"
+      },
+      {
+        "type": "mc",
+        "question": "After using the Threats of Self-Harm macro, what follow-up step is required?",
+        "options": [
+          "No follow-up needed",
+          "Use the Self-Harm Follow-Up macro",
+          "Close the ticket",
+          "Transfer to T3"
+        ],
+        "correct": 1,
+        "explanation": "After addressing an immediate self-harm concern, use #Kikoff::General::Self-Harm Follow-Up to ensure proper follow-up care.",
+        "category": "Safety"
+      },
+      {
+        "type": "mc",
+        "question": "In what order should you attempt escalation?",
+        "options": [
+          "T3 first, then T2 if T3 is busy",
+          "T2 first, then T3 if T2 can't resolve",
+          "Only T3 — skip T2",
+          "Neither — handle everything yourself"
+        ],
+        "correct": 1,
+        "explanation": "Always try T2 (supervisor) first. Only escalate to T3 (management) if T2 cannot resolve the issue.",
+        "category": "Escalation"
+      }
+    ]
+  },
+  {
+    "title": "Authentication Procedures",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "authentication-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "When must you authenticate a customer?",
+        "options": [
+          "Only for account closure requests",
+          "Only for payment-related inquiries",
+          "Before making any account changes or sharing account-specific information",
+          "Only when they ask for a refund"
+        ],
+        "correct": 2,
+        "explanation": "Always authenticate the customer before making any account changes or sharing account-specific information.",
+        "category": "Policy"
+      },
+      {
+        "type": "mc",
+        "question": "A customer fails Persona verification. What do you do?",
+        "options": [
+          "Close their account",
+          "Use the 'Did not complete Persona' macro and follow up",
+          "Give them the information anyway",
+          "Tell them to create a new account"
+        ],
+        "correct": 1,
+        "explanation": "Use the #Kikoff::Authentication::Did not complete Persona macro and follow up with the customer on next steps.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "You cannot locate a customer's account during authentication. Which macro should you use?",
+        "options": [
+          "#Kikoff::Authentication::Did not complete Persona",
+          "#Kikoff::Authentication::Cannot Locate Account/Persona verification",
+          "#Kikoff::General::T3 Escalation",
+          "#Kikoff::General::Info Reset"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Authentication::Cannot Locate Account/Persona verification when the account cannot be found.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer is upset that you're asking them to verify their identity. They say 'I already proved who I am last time!' What should you do?",
+        "options": [
+          "Skip authentication since they were verified before",
+          "Explain that authentication is required every time for their account security, and proceed",
+          "Transfer to a supervisor",
+          "Close the ticket"
+        ],
+        "correct": 1,
+        "explanation": "Authentication is required every time for the customer's security. Politely explain this and proceed with verification.",
+        "category": "Policy"
+      },
+      {
+        "type": "mc",
+        "question": "If authentication fails after multiple attempts, what should you do?",
+        "options": [
+          "Give them the information anyway since they tried",
+          "Tell them to come back tomorrow",
+          "Escalate to T3",
+          "Create a new account for them"
+        ],
+        "correct": 2,
+        "explanation": "If authentication fails after multiple attempts, escalate to T3 for further review. Never share account information without proper authentication.",
+        "category": "Escalation"
+      }
+    ]
+  },
+  {
+    "title": "Deceased User Procedures",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "deceased-user-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is the most important thing to remember when handling a deceased user case?",
+        "options": [
+          "Process the case as quickly as possible",
+          "Handle with extreme sensitivity and empathy",
+          "Immediately close the account",
+          "Ask for proof of death right away"
+        ],
+        "correct": 1,
+        "explanation": "Deceased user cases must be handled with extreme sensitivity and empathy. The person contacting you is likely grieving.",
+        "category": "Sensitivity"
+      },
+      {
+        "type": "mc",
+        "question": "Someone contacts you about a deceased user's account. Which macro do you use first?",
+        "options": [
+          "#Kikoff::General::Deceased User Close Confirmation",
+          "#Kikoff::General::Deceased User Request",
+          "#Kikoff::General::Deceased User Close Confirmation (Funds Available)",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Start with #Kikoff::General::Deceased User Request to initiate the process properly.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A deceased user's account has funds available. Which confirmation macro should you use?",
+        "options": [
+          "#Kikoff::General::Deceased User Close Confirmation",
+          "#Kikoff::General::Deceased User Close Confirmation (Funds Available)",
+          "#Kikoff::General::Deceased User Request",
+          "#Kikoff::CA Offboarding::Close CA"
+        ],
+        "correct": 1,
+        "explanation": "When funds are available in the deceased user's account, use #Kikoff::General::Deceased User Close Confirmation (Funds Available) to handle the funds appropriately.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A deceased user's account has no funds. Which macro should you use for closure confirmation?",
+        "options": [
+          "#Kikoff::General::Deceased User Close Confirmation (Funds Available)",
+          "#Kikoff::General::Deceased User Close Confirmation",
+          "#Kikoff::General::Deceased User Request",
+          "#Kikoff::CA Offboarding::Manual Closure"
+        ],
+        "correct": 1,
+        "explanation": "For accounts with no funds, use #Kikoff::General::Deceased User Close Confirmation.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A family member is crying while telling you about a deceased user's account. What should you do?",
+        "options": [
+          "Rush through the process to end the call quickly",
+          "Show genuine empathy, take your time, and handle the case with extreme care",
+          "Put them on hold to collect yourself",
+          "Transfer to someone else"
+        ],
+        "correct": 1,
+        "explanation": "Show genuine empathy and take your time. Don't rush — handle the case with extreme care and sensitivity.",
+        "category": "Sensitivity"
+      }
+    ]
+  },
+  {
+    "title": "Third-Party Contact Procedures",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "third-party-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A third party contacts you requesting information about a customer's account. What do you need?",
+        "options": [
+          "The customer's verbal permission over the phone",
+          "Proper authorization: Power of Authority (POA) or Verification of Loan (VoL)",
+          "Nothing — just verify the third party's identity",
+          "A T3 approval"
+        ],
+        "correct": 1,
+        "explanation": "Third parties need proper authorization — either a POA or VoL. Cannot share customer information without it.",
+        "category": "Authorization"
+      },
+      {
+        "type": "mc",
+        "question": "A Kikoff employee contacts you about a customer account. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::3rd party contact",
+          "#Kikoff::General::3rd Party Contact Employee",
+          "#Kikoff::General::3rd Party Contact Partnership Request",
+          "#Kikoff::General::T2 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::3rd Party Contact Employee for internal employee contacts about customer accounts.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "Someone contacts you about a potential partnership with Kikoff. Which macro applies?",
+        "options": [
+          "#Kikoff::General::3rd party contact",
+          "#Kikoff::General::3rd Party Contact Employee",
+          "#Kikoff::General::3rd Party Contact Partnership Request",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::General::3rd Party Contact Partnership Request to route partnership inquiries appropriately.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A person claims to be the customer's lawyer and demands account information immediately. They don't have a POA. What should you do?",
+        "options": [
+          "Provide the information since they're a lawyer",
+          "Explain that proper authorization (POA or VoL) is required before any info can be shared",
+          "Transfer to T3",
+          "End the conversation"
+        ],
+        "correct": 1,
+        "explanation": "Regardless of who the third party claims to be, proper authorization (POA or VoL) is always required. Cannot share customer information without it.",
+        "category": "Authorization"
+      },
+      {
+        "type": "mc",
+        "question": "Can you share any customer information with a third party who doesn't have proper authorization?",
+        "options": [
+          "Yes, if they know the customer's name and email",
+          "Yes, but only basic information",
+          "No — proper authorization is always required",
+          "Yes, if the customer called in separately"
+        ],
+        "correct": 2,
+        "explanation": "You cannot share ANY customer information without proper authorization (POA or VoL). No exceptions.",
+        "category": "Authorization"
+      }
+    ]
+  },
+  {
+    "title": "Voice & Chat Workflow",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "voice-workflow-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "After completing a voice call, what macro should you use to document it?",
+        "options": [
+          "#Kikoff::General::Call follow-up",
+          "#Kikoff::General::Call notation",
+          "#Kikoff::General::Disconnected Call",
+          "#Kikoff::General::Chat follow-up"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Call notation to document the call with proper notes.",
+        "category": "Documentation"
+      },
+      {
+        "type": "mc",
+        "question": "A phone call gets disconnected mid-conversation. What should you do?",
+        "options": [
+          "Wait for the customer to call back",
+          "Use the Disconnected Call macro and follow up",
+          "Close the ticket",
+          "Do nothing — the customer will reach out again"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Disconnected Call and immediately follow up with the customer.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "A chat session gets disconnected. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Disconnected Call",
+          "#Kikoff::General::Call follow-up",
+          "#Kikoff::General::Disconnected chat",
+          "#Kikoff::General::Chat follow-up"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::General::Disconnected chat specifically for chat sessions that get disconnected.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "After resolving an issue from a previous call, which macro should you use for follow-up?",
+        "options": [
+          "#Kikoff::General::Call notation",
+          "#Kikoff::General::Call follow-up",
+          "#Kikoff::General::Disconnected Call",
+          "#Kikoff::General::Chat follow-up"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Call follow-up when following up on a previously handled voice call.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "What is the key difference between 'Call follow-up' and 'Chat follow-up' macros?",
+        "options": [
+          "There is no difference",
+          "Call follow-up is for voice interactions; Chat follow-up is for chat/text interactions",
+          "Call follow-up includes a phone number; Chat follow-up includes an email",
+          "Call follow-up is for T2; Chat follow-up is for T3"
+        ],
+        "correct": 1,
+        "explanation": "Use the appropriate follow-up macro for the channel: Call follow-up for voice interactions, Chat follow-up for chat/text interactions.",
+        "category": "Process"
+      }
+    ]
+  },
+  {
+    "title": "Transaction & Charge Inquiries",
+    "cx_lifecycle": "General",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "transactions-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A customer asks about an unknown charge on their account. What should you do first?",
+        "options": [
+          "Refund it immediately",
+          "Investigate the transaction using AdminTool and ask for a screenshot if needed",
+          "Tell them to contact their bank",
+          "Close their account"
+        ],
+        "correct": 1,
+        "explanation": "Investigate the transaction in AdminTool and request a screenshot from the customer if needed for evidence.",
+        "category": "Investigation"
+      },
+      {
+        "type": "mc",
+        "question": "You need evidence from the customer about a charge. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Transaction Confirmed",
+          "#Kikoff::General::Unknown Transaction",
+          "#Kikoff::General::Screenshot Request",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::General::Screenshot Request to ask the customer for a screenshot of the charge in question.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "After investigation, you've confirmed the transaction is legitimate. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Screenshot Request",
+          "#Kikoff::General::Transaction Confirmed",
+          "#Kikoff::General::Unknown Transaction",
+          "#Kikoff::CA Offboarding::Not Fraud"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::General::Transaction Confirmed when you've verified that the transaction is legitimate.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A transaction can't be identified after investigation. Which macro should you use?",
+        "options": [
+          "#Kikoff::General::Transaction Confirmed",
+          "#Kikoff::General::Screenshot Request",
+          "#Kikoff::General::Unknown Transaction",
+          "#Kikoff::General::T2 Escalation"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::General::Unknown Transaction when the transaction cannot be identified after investigation.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer is angry about a charge and claims they were scammed by Kikoff. What's the best approach?",
+        "options": [
+          "Refund immediately to calm them down",
+          "Investigate the transaction, explain the findings, and use the appropriate macro based on what you find",
+          "Tell them Kikoff doesn't scam people and end the chat",
+          "Transfer directly to T3"
+        ],
+        "correct": 1,
+        "explanation": "Investigate thoroughly, explain your findings clearly, and use the appropriate macro (Transaction Confirmed or Unknown Transaction) based on the investigation results.",
+        "category": "Investigation"
+      }
+    ]
+  },
+  {
+    "title": "Secured Card Operations",
+    "cx_lifecycle": "Secured Card",
+    "difficulty": "Difficulty: Hard",
+    "difficulty_short": "Hard",
+    "filename": "secured-card-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is required to open a Secured Card?",
+        "options": [
+          "A credit check",
+          "A security deposit",
+          "A referral code",
+          "An Ultimate Plan subscription"
+        ],
+        "correct": 1,
+        "explanation": "The Secured Card requires a security deposit to open. The deposit becomes the credit limit.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "Can customers use Apple Pay with their Secured Card?",
+        "options": [
+          "No, it's not supported",
+          "Yes, Apple Pay is supported",
+          "Only with the physical card",
+          "Only on Ultimate Plan"
+        ],
+        "correct": 1,
+        "explanation": "Yes, Apple Pay is supported with the Kikoff Secured Card.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer can't close their SC. What should you check?",
+        "options": [
+          "If they have a CBL open",
+          "If there are pending transactions or remaining balance on the SC",
+          "If they've been a customer for less than 30 days",
+          "If they have the Basic Plan"
+        ],
+        "correct": 1,
+        "explanation": "Check for pending transactions or remaining balance. These must be resolved before the SC can be closed.",
+        "category": "Troubleshooting"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to know how to open a Secured Card. Which macro should you use?",
+        "options": [
+          "#Kikoff::SC::Unable to Open",
+          "#Kikoff::SC::How to Open",
+          "#Kikoff::CA Onboarding::SC How It Works",
+          "#Kikoff::SC::How to Add Funds"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::SC::How to Open to guide the customer through the SC opening process.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer received their physical Secured Card and needs to activate it. Which macro should you use?",
+        "options": [
+          "#Kikoff::SC::How to use Virtual SC",
+          "#Kikoff::SC::How to Activate Physical Secured Card",
+          "#Kikoff::SC::Card Replaced",
+          "#Kikoff::SC::How to Open"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::SC::How to Activate Physical Secured Card to guide them through physical card activation.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "Can a customer use their virtual Secured Card immediately?",
+        "options": [
+          "No, they must wait for the physical card",
+          "Yes, the virtual SC can be used immediately",
+          "Only for online purchases after 24 hours",
+          "Only after making a deposit"
+        ],
+        "correct": 1,
+        "explanation": "The virtual Secured Card can be used immediately — customers don't have to wait for the physical card.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer asks about ATM withdrawal limits on their Secured Card. Which macro should you use?",
+        "options": [
+          "#Kikoff::SC::How to Add Funds",
+          "#Kikoff::SC::Wire Money",
+          "#Kikoff::SC::ATM withdrawal limit",
+          "#Kikoff::SC::Deposit/Transfer Timeframe"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::SC::ATM withdrawal limit to explain the ATM withdrawal limits for the Secured Card.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "How can a customer lock their Secured Card for security?",
+        "options": [
+          "They can't — it must be reported stolen",
+          "Use #Kikoff::SC::How to Lock SC to guide them",
+          "They need to call the bank",
+          "Only agents can lock cards"
+        ],
+        "correct": 1,
+        "explanation": "Guide the customer using #Kikoff::SC::How to Lock SC — the card can be locked for security.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to set up direct deposit to their Secured Card. Which macro should you use?",
+        "options": [
+          "#Kikoff::SC::Set up ACH Transfer",
+          "#Kikoff::SC::Set up direct deposit",
+          "#Kikoff::SC::How to Add Funds",
+          "#Kikoff::SC::Deposit/Transfer Timeframe"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::SC::Set up direct deposit to guide the customer through the direct deposit setup process.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer's Secured Card was lost and they need a replacement. Which macro should you use?",
+        "options": [
+          "#Kikoff::SC::How to Activate Physical Secured Card",
+          "#Kikoff::SC::Card Replaced",
+          "#Kikoff::SC::How to Lock SC",
+          "#Kikoff::SC::Reopened Secured Card Account"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::SC::Card Replaced to process the card replacement for the customer.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Credit Builder Loan (CBL)",
+    "cx_lifecycle": "Credit Builder Loan",
+    "difficulty": "Difficulty: Medium",
+    "difficulty_short": "Med",
+    "filename": "cbl-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is the purpose of a Credit Builder Loan (CBL)?",
+        "options": [
+          "To give customers cash immediately",
+          "To help diversify credit mix and build credit",
+          "To replace a credit card",
+          "To pay off existing debt"
+        ],
+        "correct": 1,
+        "explanation": "The CBL is a credit builder loan that helps diversify a customer's credit mix, which is one of the factors in credit scoring.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer misses a CBL payment and a DQ Sweep occurs. Which macro should you use?",
+        "options": [
+          "#Kikoff::CBL::Within grace period",
+          "#Kikoff::CBL::DQ Sweep",
+          "#Kikoff::CBL::Early Closure",
+          "#Kikoff::CBL::Pay in Full"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CBL::DQ Sweep when a delinquent sweep has occurred due to a missed payment.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to withdraw their CBL funds but their bank is restricted. Which macro should you use?",
+        "options": [
+          "#Kikoff::CBL::How to withdraw CBL",
+          "#Kikoff::CBL::Restricted Banks for Withdrawal",
+          "#Kikoff::CBL::Withdrawal Error",
+          "#Kikoff::CBL::Withdrawal Success"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CBL::Restricted Banks for Withdrawal to explain which banks are restricted and offer alternatives.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer successfully withdraws their CBL funds. Which macro confirms this?",
+        "options": [
+          "#Kikoff::CBL::How to withdraw CBL",
+          "#Kikoff::CBL::Withdrawal Success",
+          "#Kikoff::CBL::Check Within Timeframe",
+          "#Kikoff::CBL::Pay in Full"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CBL::Withdrawal Success to confirm the successful withdrawal.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's CBL withdrawal fails. Which macro should you use?",
+        "options": [
+          "#Kikoff::CBL::Withdrawal Success",
+          "#Kikoff::CBL::Withdrawal Error",
+          "#Kikoff::CBL::Restricted Banks for Withdrawal",
+          "#Kikoff::CBL::DQ Sweep"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CBL::Withdrawal Error to troubleshoot and resolve the withdrawal failure.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to close their CBL early. Which macro should you use?",
+        "options": [
+          "#Kikoff::CBL::Pay in Full",
+          "#Kikoff::CBL::Early Closure",
+          "#Kikoff::CBL::DQ Sweep",
+          "#Kikoff::CA Offboarding::Close CA CBL"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CBL::Early Closure for customers who want to close their CBL before the term ends.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's CBL check was sent but hasn't arrived within the expected timeframe. Which macro should you use?",
+        "options": [
+          "#Kikoff::CBL::Check Within Timeframe",
+          "#Kikoff::CBL::Check Outside Timeframe",
+          "#Kikoff::CBL::Check Resent",
+          "#Kikoff::CBL::4th Check Reissue"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::CBL::Check Outside Timeframe when the check hasn't arrived after the expected delivery window.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer's CBL check has been reissued 3 times already and they need it sent again. Which macro should you use?",
+        "options": [
+          "#Kikoff::CBL::Check Resent",
+          "#Kikoff::CBL::Check Outside Timeframe",
+          "#Kikoff::CBL::4th Check Reissue",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 2,
+        "explanation": "The 4th check reissue requires special handling. Use #Kikoff::CBL::4th Check Reissue for this specific situation.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Rent Reporting Procedures",
+    "cx_lifecycle": "Bill & Rent Reporting",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "rent-reporting-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "Which Kikoff plans include rent reporting?",
+        "options": [
+          "All plans including Basic",
+          "Premium and Ultimate only",
+          "Ultimate only",
+          "It's a separate add-on for any plan"
+        ],
+        "correct": 1,
+        "explanation": "Rent reporting is available on Premium ($15/month) and Ultimate ($35/month) plans only.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer says their rent payment wasn't detected. Which macro should you use?",
+        "options": [
+          "#Kikoff::Rent Reporting::How It Works",
+          "#Kikoff::Rent Reporting::Payment Not Detected",
+          "#Kikoff::Rent Reporting::Lease Upload Issue",
+          "#Kikoff::Rent Reporting::Back Reporting Unavailable for Rent"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Rent Reporting::Payment Not Detected to troubleshoot why the rent payment wasn't picked up.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer asks if they can get past rent payments reported. What should you tell them?",
+        "options": [
+          "Yes, all past payments can be back-reported",
+          "Yes, but only the last 3 months",
+          "No, back reporting is not available for rent",
+          "Yes, for an additional fee"
+        ],
+        "correct": 2,
+        "explanation": "Back reporting is not available for rent. Use #Kikoff::Rent Reporting::Back Reporting Unavailable for Rent.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer moved and needs to update their rent reporting address. Which macro should you use?",
+        "options": [
+          "#Kikoff::Rent Reporting::How It Works",
+          "#Kikoff::Rent Reporting::Change Rent Reporting Address",
+          "#Kikoff::Account Maintenance::Update Phone Number/Address (Self-Serve)",
+          "#Kikoff::Rent Reporting::Payment Not Detected"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Rent Reporting::Change Rent Reporting Address specifically for updating the rent reporting address.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer is having trouble uploading their lease document. Which macro should you use?",
+        "options": [
+          "#Kikoff::Rent Reporting::How It Works",
+          "#Kikoff::Rent Reporting::Payment Not Detected",
+          "#Kikoff::Rent Reporting::Lease Upload Issue",
+          "#Kikoff::General::General Troubleshooting"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::Rent Reporting::Lease Upload Issue to troubleshoot the lease document upload problem.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Bill Reporting Procedures",
+    "cx_lifecycle": "Bill & Rent Reporting",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "bill-reporting-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "Which Kikoff plans include bill reporting?",
+        "options": [
+          "All plans including Basic",
+          "Premium and Ultimate only",
+          "Ultimate only",
+          "It's a separate add-on"
+        ],
+        "correct": 1,
+        "explanation": "Bill reporting is available on Premium ($15/month) and Ultimate ($35/month) plans.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "Is back reporting available for bill payments?",
+        "options": [
+          "No, it's never available",
+          "Yes, back reporting may be available for bills",
+          "Only for utility bills",
+          "Only after 6 months of active reporting"
+        ],
+        "correct": 1,
+        "explanation": "Back reporting may be available for bills (unlike rent, where back reporting is not available).",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's bill payments are not being detected. Which macro should you use?",
+        "options": [
+          "#Kikoff::Bill Reporting::How It Works",
+          "#Kikoff::Bill Reporting::Can't Detect",
+          "#Kikoff::Bill Reporting::Stopped reporting",
+          "#Kikoff::Bill Reporting::Payment Troubleshooting"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Bill Reporting::Can't Detect when the system can't detect the customer's bill payments.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer's bill reporting suddenly stopped working. Which macro should you use?",
+        "options": [
+          "#Kikoff::Bill Reporting::Can't Detect",
+          "#Kikoff::Bill Reporting::Payment Troubleshooting",
+          "#Kikoff::Bill Reporting::Stopped reporting",
+          "#Kikoff::Bill Reporting::How It Works"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::Bill Reporting::Stopped reporting to investigate why the reporting stopped and work on a resolution.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer has a payment issue with bill reporting. Which macro should you try first?",
+        "options": [
+          "#Kikoff::Bill Reporting::Can't Detect",
+          "#Kikoff::Bill Reporting::Stopped reporting",
+          "#Kikoff::Bill Reporting::Payment Troubleshooting",
+          "#Kikoff::General::General Troubleshooting"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::Bill Reporting::Payment Troubleshooting as the first step for payment-related bill reporting issues.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Updating PII (Personal Information)",
+    "cx_lifecycle": "Account Maintenance",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "updating-pii-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What must you do before making any PII changes to a customer's account?",
+        "options": [
+          "Check their credit score",
+          "Authenticate the customer",
+          "Get T3 approval",
+          "Ask for a screenshot of their ID"
+        ],
+        "correct": 1,
+        "explanation": "Always authenticate the customer before making any personal information changes to their account.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to update their phone number. Can they do it themselves?",
+        "options": [
+          "No, only agents can update phone numbers",
+          "Yes, phone number and address updates can be self-served",
+          "Only if they have the Ultimate plan",
+          "Only through email"
+        ],
+        "correct": 1,
+        "explanation": "Phone number and address updates can be self-served by the customer. Use #Kikoff::Account Maintenance::Update Phone Number/Address (Self-Serve).",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "A customer needs to update their DOB or SSN. What should you do?",
+        "options": [
+          "Update it directly in AdminTool",
+          "Request documentation and escalate the change",
+          "Tell them it can't be changed",
+          "Ask them to create a new account"
+        ],
+        "correct": 1,
+        "explanation": "DOB/SSN changes require documentation and must be escalated. Use #Kikoff::Account Maintenance::Update DOB/SSN Request.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "After completing a PII update, what should you do?",
+        "options": [
+          "Close the ticket immediately",
+          "Confirm the updates with the customer and create an internal note",
+          "Transfer to T3 for review",
+          "Ask the customer to log out and back in"
+        ],
+        "correct": 1,
+        "explanation": "Always confirm all updates with the customer and create internal notes for tracking sensitive PII changes.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "What documentation is needed for an address update?",
+        "options": [
+          "No documentation needed — it's self-serve",
+          "A passport only",
+          "Acceptable documents as specified in the procedures",
+          "A utility bill and driver's license"
+        ],
+        "correct": 2,
+        "explanation": "Address updates may require acceptable documentation. Use #Kikoff::Account Maintenance::Accepted Documents for Address Update to inform the customer what's needed.",
+        "category": "Process"
+      }
+    ]
+  },
+  {
+    "title": "Cease & Desist Procedures",
+    "cx_lifecycle": "Account Maintenance",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "cease-desist-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "What is the first step when handling a Cease & Desist request?",
+        "options": [
+          "Immediately stop all communications",
+          "Determine if proper validation is required",
+          "Close the account",
+          "Escalate to T3"
+        ],
+        "correct": 1,
+        "explanation": "First determine if proper validation is required. C&D requests have specific validation requirements.",
+        "category": "Process"
+      },
+      {
+        "type": "mc",
+        "question": "Which macro should you use for C&D validation on an OPEN account?",
+        "options": [
+          "#Kikoff::Account Maintenance::Cease & Desist Non Validation",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation of Account (Closed)",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation of Account (Open)",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation Pushback"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::Account Maintenance::Cease & Desist Validation of Account (Open) for C&D requests on open accounts.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "Which macro should you use for C&D validation on a CLOSED account?",
+        "options": [
+          "#Kikoff::Account Maintenance::Cease & Desist Validation of Account (Open)",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation of Account (Closed)",
+          "#Kikoff::Account Maintenance::Cease & Desist Non Validation",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation Pushback"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Account Maintenance::Cease & Desist Validation of Account (Closed) for C&D requests on closed accounts.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A C&D case doesn't require validation. Which macro should you use?",
+        "options": [
+          "#Kikoff::Account Maintenance::Cease & Desist Validation Pushback",
+          "#Kikoff::Account Maintenance::Cease & Desist Non Validation",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation of Account (Open)",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Account Maintenance::Cease & Desist Non Validation for cases that don't require account validation.",
+        "category": "Macros"
+      },
+      {
+        "type": "scenario",
+        "question": "A customer pushes back on the C&D validation requirements. Which macro should you use?",
+        "options": [
+          "#Kikoff::Account Maintenance::Cease & Desist Non Validation",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation Pushback",
+          "#Kikoff::General::T2 Escalation",
+          "#Kikoff::Account Maintenance::Cease & Desist Validation of Account (Open)"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Account Maintenance::Cease & Desist Validation Pushback when a customer pushes back on validation requirements.",
+        "category": "Macros"
+      }
+    ]
+  },
+  {
+    "title": "Communication Opt-Out Requests",
+    "cx_lifecycle": "Account Maintenance",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "communication-optout-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "A customer wants to unsubscribe from Kikoff communications. Which macro should you use?",
+        "options": [
+          "#Kikoff::Account Maintenance::Data Deletion Request",
+          "#Kikoff::Account Maintenance::Unsubscribe Request",
+          "#Kikoff::Account Maintenance::Do Not Sell My Data",
+          "#Kikoff::General::T2 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Account Maintenance::Unsubscribe Request to process the customer's unsubscribe request.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer requests that all their data be deleted. Which macro should you use?",
+        "options": [
+          "#Kikoff::Account Maintenance::Unsubscribe Request",
+          "#Kikoff::Account Maintenance::Data Deletion Request",
+          "#Kikoff::Account Maintenance::Do Not Sell My Data",
+          "#Kikoff::CA Offboarding::Close CA"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Account Maintenance::Data Deletion Request to process the data deletion request properly.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer says 'Do not sell my personal information.' Which macro applies?",
+        "options": [
+          "#Kikoff::Account Maintenance::Unsubscribe Request",
+          "#Kikoff::Account Maintenance::Data Deletion Request",
+          "#Kikoff::Account Maintenance::Do Not Sell My Data",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::Account Maintenance::Do Not Sell My Data — this is a legal right that must be respected.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "Are customers legally entitled to request that their data not be sold?",
+        "options": [
+          "No, they agreed to the terms of service",
+          "Yes, 'Do Not Sell' requests are a legal right",
+          "Only in certain states",
+          "Only for Premium plan customers"
+        ],
+        "correct": 1,
+        "explanation": "Do Not Sell requests are a legal right that must be processed properly.",
+        "category": "Policy"
+      },
+      {
+        "type": "mc",
+        "question": "What is the difference between an unsubscribe request and a data deletion request?",
+        "options": [
+          "They are the same thing",
+          "Unsubscribe stops communications; data deletion removes stored personal data",
+          "Unsubscribe is for email only; data deletion is for phone",
+          "Data deletion includes unsubscribe automatically"
+        ],
+        "correct": 1,
+        "explanation": "Unsubscribe stops marketing/promotional communications. Data deletion is more comprehensive — it requests removal of stored personal data.",
+        "category": "Policy"
+      }
+    ]
+  },
+  {
+    "title": "Privacy Protection & ID Theft Insurance",
+    "cx_lifecycle": "Other",
+    "difficulty": "Difficulty: Easy",
+    "difficulty_short": "Easy",
+    "filename": "privacy-protection-quiz.html",
+    "questions": [
+      {
+        "type": "mc",
+        "question": "Which Kikoff plan includes privacy protection and ID theft insurance?",
+        "options": [
+          "Basic Plan",
+          "Premium Plan",
+          "Ultimate Plan",
+          "All plans"
+        ],
+        "correct": 2,
+        "explanation": "Privacy protection and $1M identity theft insurance are exclusive to the Ultimate Plan.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "How much identity theft insurance coverage does the Ultimate Plan provide?",
+        "options": [
+          "$100,000",
+          "$500,000",
+          "$1,000,000 ($1M)",
+          "$2,000,000"
+        ],
+        "correct": 2,
+        "explanation": "The Ultimate Plan includes $1M (one million dollars) in identity theft insurance.",
+        "category": "Product Knowledge"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to file an ID theft insurance claim. Which macro should you use?",
+        "options": [
+          "#Kikoff::Privacy Protection::How It Works",
+          "#Kikoff::Privacy Protection::How to file ID theft insurance",
+          "#Kikoff::Privacy Protection::Scan Inaccuracies",
+          "#Kikoff::General::T3 Escalation"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Privacy Protection::How to file ID theft insurance to guide the customer through the claim filing process.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer reports inaccuracies in their privacy scan results. Which macro should you use?",
+        "options": [
+          "#Kikoff::Privacy Protection::How It Works",
+          "#Kikoff::Privacy Protection::How to file ID theft insurance",
+          "#Kikoff::Privacy Protection::Scan Inaccuracies",
+          "#Kikoff::Privacy Protection::ID theft insurance how it works"
+        ],
+        "correct": 2,
+        "explanation": "Use #Kikoff::Privacy Protection::Scan Inaccuracies to address and report inaccuracies found in privacy scans.",
+        "category": "Macros"
+      },
+      {
+        "type": "mc",
+        "question": "A customer wants to understand how ID theft insurance works. Which macro should you use?",
+        "options": [
+          "#Kikoff::Privacy Protection::How to file ID theft insurance",
+          "#Kikoff::Privacy Protection::ID theft insurance how it works",
+          "#Kikoff::Privacy Protection::How It Works",
+          "#Kikoff::Privacy Protection::Scan Inaccuracies"
+        ],
+        "correct": 1,
+        "explanation": "Use #Kikoff::Privacy Protection::ID theft insurance how it works to explain the insurance benefits and coverage.",
+        "category": "Macros"
+      }
+    ]
+  }
+]

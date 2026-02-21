@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Account Closure Procedures - Kikoff Agent Quiz</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8f9fa; color: #1a1a2e; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 20px; }
+  .quiz-container { max-width: 720px; width: 100%; background: #fff; border-radius: 16px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); overflow: hidden; }
+  .quiz-header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 24px 32px; }
+  .quiz-header h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+  .quiz-header .meta { font-size: 13px; opacity: 0.8; display: flex; gap: 16px; flex-wrap: wrap; }
+  .quiz-header .meta span { display: flex; align-items: center; gap: 4px; }
+  .progress-bar { height: 4px; background: rgba(255,255,255,0.2); }
+  .progress-fill { height: 100%; background: #4ecca3; transition: width 0.4s ease; }
+  .quiz-body { padding: 32px; }
+  .question-counter { font-size: 13px; color: #666; margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .question-type { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-bottom: 12px; font-weight: 600; }
+  .question-type.mc { background: #e3f2fd; color: #1565c0; }
+  .question-type.scenario { background: #fce4ec; color: #c62828; }
+  .question-text { font-size: 17px; font-weight: 600; line-height: 1.5; margin-bottom: 24px; color: #1a1a2e; }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option { padding: 14px 18px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; transition: all 0.2s; font-size: 15px; line-height: 1.4; display: flex; align-items: flex-start; gap: 12px; }
+  .option:hover:not(.disabled) { border-color: #4ecca3; background: #f0fdf4; }
+  .option.selected { border-color: #4ecca3; background: #f0fdf4; }
+  .option.correct { border-color: #2e7d32; background: #e8f5e9; }
+  .option.incorrect { border-color: #c62828; background: #ffebee; }
+  .option.disabled { cursor: default; opacity: 0.7; }
+  .option.disabled.correct { opacity: 1; }
+  .option-letter { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; color: #666; }
+  .option.correct .option-letter { background: #2e7d32; color: #fff; }
+  .option.incorrect .option-letter { background: #c62828; color: #fff; }
+  .feedback { margin-top: 16px; padding: 14px 18px; border-radius: 10px; font-size: 14px; line-height: 1.5; display: none; }
+  .feedback.correct { background: #e8f5e9; border-left: 4px solid #2e7d32; color: #1b5e20; }
+  .feedback.incorrect { background: #ffebee; border-left: 4px solid #c62828; color: #b71c1c; }
+  .feedback.show { display: block; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+  .btn-primary { background: #1a1a2e; color: #fff; }
+  .btn-primary:hover { background: #16213e; transform: translateY(-1px); }
+  .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+  .btn-secondary { background: #f0f0f0; color: #333; }
+  .btn-secondary:hover { background: #e0e0e0; }
+  .btn-row { display: flex; justify-content: flex-end; margin-top: 24px; gap: 12px; }
+  .results { text-align: center; padding: 40px 32px; }
+  .results-icon { font-size: 64px; margin-bottom: 16px; }
+  .results h2 { font-size: 24px; margin-bottom: 8px; }
+  .results .score { font-size: 48px; font-weight: 800; margin: 16px 0; }
+  .results .score.pass { color: #2e7d32; }
+  .results .score.fail { color: #c62828; }
+  .results .detail { font-size: 15px; color: #666; margin-bottom: 8px; }
+  .results-breakdown { text-align: left; margin: 24px 0; padding: 20px; background: #f8f9fa; border-radius: 12px; }
+  .results-breakdown h3 { font-size: 15px; margin-bottom: 12px; color: #333; }
+  .breakdown-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+  .breakdown-item:last-child { border: none; }
+  .breakdown-item .label { color: #666; }
+  .breakdown-item .value { font-weight: 600; }
+  .copy-code { margin-top: 20px; padding: 16px; background: #1a1a2e; color: #4ecca3; border-radius: 10px; font-family: monospace; font-size: 13px; word-break: break-all; cursor: pointer; position: relative; }
+  .copy-code:hover { background: #16213e; }
+  .copy-code::after { content: 'Click to copy'; position: absolute; top: -8px; right: 12px; background: #4ecca3; color: #1a1a2e; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; font-family: -apple-system, sans-serif; }
+  .copy-code.copied::after { content: 'Copied!'; background: #2e7d32; color: #fff; }
+  .hidden { display: none; }
+  .start-screen { text-align: center; padding: 40px 32px; }
+  .start-screen h2 { font-size: 22px; margin-bottom: 12px; }
+  .start-screen p { color: #666; font-size: 15px; margin-bottom: 24px; line-height: 1.6; }
+  .start-info { display: flex; gap: 24px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; }
+  .start-info-item { text-align: center; }
+  .start-info-item .num { font-size: 28px; font-weight: 800; color: #1a1a2e; }
+  .start-info-item .lbl { font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h1 id="quizTitle">Account Closure Procedures</h1>
+    <div class="meta">
+      <span>Offboarding</span>
+      <span>Difficulty: Hard</span>
+      <span id="questionCountMeta">10 Questions</span>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <div id="startScreen" class="start-screen">
+    <h2>Ready to test your knowledge?</h2>
+    <p>This quiz covers the <strong>Account Closure Procedures</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
+    <div class="start-info">
+      <div class="start-info-item"><div class="num" id="totalQNum">10</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
+      <div class="start-info-item"><div class="num" id="difficultyDisplay">Hard</div><div class="lbl">Difficulty</div></div>
+    </div>
+    <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+  </div>
+
+  <div id="questionScreen" class="quiz-body hidden">
+    <div class="question-counter" id="questionCounter"></div>
+    <div class="question-type" id="questionType"></div>
+    <div class="question-text" id="questionText"></div>
+    <div class="options" id="optionsContainer"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+  </div>
+
+  <div id="resultsScreen" class="results hidden">
+    <div class="results-icon" id="resultsIcon"></div>
+    <h2 id="resultsTitle"></h2>
+    <div class="score" id="resultsScore"></div>
+    <div class="detail" id="resultsDetail"></div>
+    <div class="results-breakdown" id="resultsBreakdown"></div>
+    <div class="copy-code" id="copyCode" onclick="copyResults()"></div>
+    <div class="btn-row" style="justify-content:center;margin-top:24px;">
+      <button class="btn btn-secondary" onclick="retakeQuiz()">Retake Quiz</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// QUIZ DATA - Replace this with actual quiz data
+const QUIZ_DATA = {
+  "title": "Account Closure Procedures",
+  "questions": [
+    {
+      "type": "scenario",
+      "question": "A customer says they lost their job and needs to cancel immediately. What should you do?",
+      "options": [
+        "Offer them a discount to stay",
+        "Skip the discount offer and proceed directly to manual closure",
+        "Transfer them to a retention specialist",
+        "Ask them to try Kikoff for one more month"
+      ],
+      "correct": 1,
+      "explanation": "Per procedures: when a customer states they lost their job, you should skip the discount offer and proceed directly to manual closure. Respect their financial hardship.",
+      "category": "Closure Flow"
+    },
+    {
+      "type": "mc",
+      "question": "Which macro should you use when a customer accepts a discount offer to keep their account?",
+      "options": [
+        "#Kikoff::CA Offboarding::Close CA",
+        "#Kikoff::CA Offboarding::Discount Accepted",
+        "#Kikoff::CA Offboarding::Manual Closure",
+        "#Kikoff::General::T3 Escalation"
+      ],
+      "correct": 1,
+      "explanation": "When a customer accepts the discount offer, use the #Kikoff::CA Offboarding::Discount Accepted macro.",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "A customer has a CA account with both a CBL and SC. Which closure macro do you use?",
+      "options": [
+        "#Kikoff::CA Offboarding::Close CA",
+        "#Kikoff::CA Offboarding::Close CA CBL",
+        "#Kikoff::CA Offboarding::Close CA SC",
+        "#Kikoff::CA Offboarding::Close CA CBL SC"
+      ],
+      "correct": 3,
+      "explanation": "When a customer has CA + CBL + SC, you need to use #Kikoff::CA Offboarding::Close CA CBL SC to properly close all products.",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "Before offering a discount during an account closure request, what should you do first?",
+      "options": [
+        "Check if the customer is within their grace period",
+        "Educate the customer on the value of their plan",
+        "Ask why they want to cancel multiple times",
+        "Transfer to a supervisor"
+      ],
+      "correct": 1,
+      "explanation": "The first step in the closure flow is to educate the customer on the value of their plan before offering any discounts.",
+      "category": "Closure Flow"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer says 'I need every penny I have' and wants to cancel. What does this indicate?",
+      "options": [
+        "They want a better deal \u2014 offer a discount",
+        "They're just testing you \u2014 push back",
+        "Financial hardship \u2014 skip discount, proceed to closure",
+        "They need to speak with a manager"
+      ],
+      "correct": 2,
+      "explanation": "Statements like 'I need every penny' indicate financial hardship. Per procedures, skip the discount offer and proceed directly to closure.",
+      "category": "Closure Flow"
+    },
+    {
+      "type": "mc",
+      "question": "A customer only has a Credit Account (no CBL or SC). Which closure macro should you use?",
+      "options": [
+        "#Kikoff::CA Offboarding::Close CA",
+        "#Kikoff::CA Offboarding::Close CA CBL",
+        "#Kikoff::CA Offboarding::Close CA SC",
+        "#Kikoff::CA Offboarding::Manual Closure"
+      ],
+      "correct": 0,
+      "explanation": "For a customer with only a CA (no CBL, no SC), use #Kikoff::CA Offboarding::Close CA.",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "What should you do after confirming account closure?",
+      "options": [
+        "Wait for the customer to call back",
+        "Send a closure confirmation and mark the ticket as solved",
+        "Transfer to T3 for review",
+        "Do nothing \u2014 the system handles it automatically"
+      ],
+      "correct": 1,
+      "explanation": "After confirming closure, send a closure confirmation and mark the ticket as solved.",
+      "category": "Closure Flow"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer wants to close their CA but still has an open SC with a pending transaction. What should you do?",
+      "options": [
+        "Close everything at once using Close CA CBL SC",
+        "Close the CA first, then handle SC closure separately after pending transactions resolve",
+        "Tell the customer to come back later",
+        "Escalate to T3 immediately"
+      ],
+      "correct": 1,
+      "explanation": "If unable to close the SC due to pending transactions, handle SC closure separately. Close the CA first and address the SC once pending transactions clear.",
+      "category": "Closure Flow"
+    },
+    {
+      "type": "mc",
+      "question": "Which macro is used for educating Premium or Ultimate plan customers about their plan value during a closure request?",
+      "options": [
+        "#Kikoff::CA Offboarding::Close Acc Educate Basic",
+        "#Kikoff::CA Offboarding::Close Acc Educate PremUlt",
+        "#Kikoff::CA Offboarding::Discount Accepted",
+        "#Kikoff::CA Offboarding::Close Account Call Follow-Up"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::CA Offboarding::Close Acc Educate PremUlt when educating Premium or Ultimate customers about the value of their plan.",
+      "category": "Macros"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer wants to cancel but you sense they might stay if offered a discount. They haven't mentioned financial hardship. What's the correct flow?",
+      "options": [
+        "Skip the education and go straight to the discount",
+        "Educate on plan value first, then offer a discount if they still want to cancel",
+        "Close the account immediately \u2014 don't waste their time",
+        "Transfer to a retention specialist"
+      ],
+      "correct": 1,
+      "explanation": "The correct flow is: first educate on plan value, then offer a discount if appropriate. Only skip the discount offer if the customer states financial hardship.",
+      "category": "Closure Flow"
+    }
+  ]
+};
+
+let currentQuestion = 0;
+let score = 0;
+let answers = [];
+let startTime;
+
+function startQuiz() {
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('questionScreen').classList.remove('hidden');
+  startTime = new Date();
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = QUIZ_DATA.questions[currentQuestion];
+  const total = QUIZ_DATA.questions.length;
+  document.getElementById('questionCounter').textContent = `Question ${currentQuestion + 1} of ${total}`;
+  document.getElementById('questionType').textContent = q.type === 'mc' ? 'Multiple Choice' : 'Scenario';
+  document.getElementById('questionType').className = `question-type ${q.type}`;
+  document.getElementById('questionText').textContent = q.question;
+  document.getElementById('progressFill').style.width = `${((currentQuestion) / total) * 100}%`;
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('nextBtn').disabled = true;
+
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerHTML = `<div class="option-letter">${letters[i]}</div><div>${opt}</div>`;
+    div.onclick = () => selectAnswer(i);
+    container.appendChild(div);
+  });
+}
+
+function selectAnswer(index) {
+  const q = QUIZ_DATA.questions[currentQuestion];
+  const options = document.querySelectorAll('.option');
+  const feedback = document.getElementById('feedback');
+  const isCorrect = index === q.correct;
+
+  options.forEach((opt, i) => {
+    opt.classList.add('disabled');
+    opt.onclick = null;
+    if (i === q.correct) opt.classList.add('correct');
+    if (i === index && !isCorrect) opt.classList.add('incorrect');
+  });
+
+  if (isCorrect) {
+    score++;
+    feedback.className = 'feedback correct show';
+    feedback.textContent = q.explanation || 'Correct!';
+  } else {
+    feedback.className = 'feedback incorrect show';
+    feedback.textContent = q.explanation || `Incorrect. The correct answer is ${['A','B','C','D'][q.correct]}.`;
+  }
+
+  answers.push({ question: currentQuestion + 1, correct: isCorrect, category: q.category || 'General' });
+  document.getElementById('nextBtn').disabled = false;
+  if (currentQuestion === QUIZ_DATA.questions.length - 1) {
+    document.getElementById('nextBtn').textContent = 'See Results';
+  }
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= QUIZ_DATA.questions.length) {
+    showResults();
+  } else {
+    showQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('questionScreen').classList.add('hidden');
+  document.getElementById('resultsScreen').classList.remove('hidden');
+  document.getElementById('progressFill').style.width = '100%';
+
+  const total = QUIZ_DATA.questions.length;
+  const pct = Math.round((score / total) * 100);
+  const passed = pct >= 80;
+  const elapsed = Math.round((new Date() - startTime) / 1000);
+  const mins = Math.floor(elapsed / 60);
+  const secs = elapsed % 60;
+
+  document.getElementById('resultsIcon').textContent = passed ? '\u2705' : '\u274C';
+  document.getElementById('resultsTitle').textContent = passed ? 'Great job! You passed!' : 'Keep studying - you can do better!';
+  document.getElementById('resultsScore').textContent = `${pct}%`;
+  document.getElementById('resultsScore').className = `score ${passed ? 'pass' : 'fail'}`;
+  document.getElementById('resultsDetail').textContent = `${score} out of ${total} correct \u2022 ${mins}m ${secs}s`;
+
+  // Category breakdown
+  const categories = {};
+  answers.forEach(a => {
+    if (!categories[a.category]) categories[a.category] = { correct: 0, total: 0 };
+    categories[a.category].total++;
+    if (a.correct) categories[a.category].correct++;
+  });
+
+  let breakdownHTML = '<h3>Performance by Category</h3>';
+  const missed = [];
+  Object.entries(categories).forEach(([cat, data]) => {
+    const catPct = Math.round((data.correct / data.total) * 100);
+    breakdownHTML += `<div class="breakdown-item"><span class="label">${cat}</span><span class="value">${data.correct}/${data.total} (${catPct}%)</span></div>`;
+    if (catPct < 80) missed.push(cat);
+  });
+  document.getElementById('resultsBreakdown').innerHTML = breakdownHTML;
+
+  // Results code for analytics
+  const now = new Date().toISOString().split('T')[0];
+  const code = `QUIZ_RESULT | ${QUIZ_DATA.title} | ${now} | Score: ${score}/${total} (${pct}%) | ${passed ? 'PASS' : 'FAIL'} | Time: ${mins}m${secs}s | Missed: ${missed.length > 0 ? missed.join(', ') : 'None'}`;
+  document.getElementById('copyCode').textContent = code;
+}
+
+function copyResults() {
+  const el = document.getElementById('copyCode');
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    el.classList.add('copied');
+    setTimeout(() => el.classList.remove('copied'), 2000);
+  });
+}
+
+function retakeQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  answers = [];
+  document.getElementById('resultsScreen').classList.add('hidden');
+  document.getElementById('startScreen').classList.remove('hidden');
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('nextBtn').textContent = 'Next';
+}
+</script>
+</body>
+</html>
