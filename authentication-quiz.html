@@ -119,47 +119,8 @@
 <script>
 // QUIZ DATA - Replace this with actual quiz data
 const QUIZ_DATA = {
-  "title": "Authentication Procedures",
+  "title": "Authentication & Security Procedures",
   "questions": [
-    {
-      "type": "mc",
-      "question": "When must you authenticate a customer?",
-      "options": [
-        "Only for account closure requests",
-        "Only for payment-related inquiries",
-        "Before making any account changes or sharing account-specific information",
-        "Only when they ask for a refund"
-      ],
-      "correct": 2,
-      "explanation": "Always authenticate the customer before making any account changes or sharing account-specific information.",
-      "category": "Policy"
-    },
-    {
-      "type": "mc",
-      "question": "A customer fails Persona verification. What do you do?",
-      "options": [
-        "Close their account",
-        "Use the 'Did not complete Persona' macro and follow up",
-        "Give them the information anyway",
-        "Tell them to create a new account"
-      ],
-      "correct": 1,
-      "explanation": "Use the #Kikoff::Authentication::Did not complete Persona macro and follow up with the customer on next steps.",
-      "category": "Macros"
-    },
-    {
-      "type": "mc",
-      "question": "You cannot locate a customer's account during authentication. Which macro should you use?",
-      "options": [
-        "#Kikoff::Authentication::Did not complete Persona",
-        "#Kikoff::Authentication::Cannot Locate Account/Persona verification",
-        "#Kikoff::General::T3 Escalation",
-        "#Kikoff::General::Info Reset"
-      ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::Authentication::Cannot Locate Account/Persona verification when the account cannot be found.",
-      "category": "Macros"
-    },
     {
       "type": "scenario",
       "question": "A customer is upset that you're asking them to verify their identity. They say 'I already proved who I am last time!' What should you do?",
@@ -175,16 +136,185 @@ const QUIZ_DATA = {
     },
     {
       "type": "mc",
-      "question": "If authentication fails after multiple attempts, what should you do?",
+      "question": "Which macro should you use when a user has clicked the Persona link but failed to actually upload their documents?",
       "options": [
-        "Give them the information anyway since they tried",
-        "Tell them to come back tomorrow",
-        "Escalate to T3",
-        "Create a new account for them"
+        "#Kikoff::Authentication::Cannot Locate Account/Persona verification",
+        "#Kikoff::Authentication::Did not complete Persona",
+        "#Kikoff::General::T3 Escalation",
+        "#Kikoff::Authentication::Persona Expired"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::Authentication::Did not complete Persona to remind the user to complete the verification and troubleshoot camera permissions.",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "If you are unable to find an account with the info provided or the user is emailing from an address not on file, which macro is used?",
+      "options": [
+        "#Kikoff::Authentication::Did not complete Persona",
+        "#Kikoff::Authentication::Cannot Locate Account/Persona verification",
+        "#Kikoff::General::Escalation Note",
+        "#Kikoff::General::Info Reset"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::Authentication::Cannot Locate Account/Persona verification when the user isn't emailing from the email on file.",
+      "category": "Macros"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer is calling from the phone number on file in Admin. What specific items must you verify?",
+      "options": [
+        "Full Name, Last 4 of SSN, and Full Address",
+        "Full Name, Date of Birth (DOB), and Last 4 digits of SSN",
+        "Name and Email Address",
+        "DOB and Full Address"
+      ],
+      "correct": 1,
+      "explanation": "For callers using the phone number on file, you must verify their Full Name, DOB, and Last 4 of SSN.",
+      "category": "Voice"
+    },
+    {
+      "type": "mc",
+      "question": "A customer is calling from a DIFFERENT phone number than the one in Admin. What additional item is required for verification?",
+      "options": [
+        "Email address",
+        "Full address (including city, state, and zip)",
+        "Mother's maiden name",
+        "The date the account was opened"
+      ],
+      "correct": 1,
+      "explanation": "Callers using a different phone number must verify Name, Last 4 of SSN, DOB, AND their Full Address.",
+      "category": "Voice"
+    },
+    {
+      "type": "mc",
+      "question": "What should you do if a customer seems to have made a typo on their DOB, but it matches the 'Vendor File' (Credit Report)?",
+      "options": [
+        "Fail the authentication immediately",
+        "Proceed with the authentication",
+        "Ask them to send a photo of their ID",
+        "Tell them their records are incorrect"
+      ],
+      "correct": 1,
+      "explanation": "If the provided DOB/SSN matches what is on their credit report (Vendor File), you are fine to proceed.",
+      "category": "Acceptable Variances"
+    },
+    {
+      "type": "scenario",
+      "question": "You look up an address and find the user provided 'North Main' but the AdminTool says 'N Main'. Is this acceptable?",
+      "options": [
+        "No, it must be an exact character match",
+        "Yes, cardinal directions are acceptable variances",
+        "Only if they also provide the correct Zip code",
+        "Only if you escalate to Tier 3 first"
+      ],
+      "correct": 1,
+      "explanation": "Additional information like cardinal directions (N, SW) are acceptable as long as they don't provide conflicting info.",
+      "category": "Acceptable Variances"
+    },
+    {
+      "type": "mc",
+      "question": "Under the ADA, if an interpreter for a deaf customer provides their Company and Interpreter ID, what should you do?",
+      "options": [
+        "Tell them you need to speak to the user alone first",
+        "Notate the company and ID on the ticket and proceed",
+        "Ask the interpreter for their personal SSN",
+        "Refuse the call as 3rd party callers are not allowed"
+      ],
+      "correct": 1,
+      "explanation": "The ADA requires us to service these customers. Notate the interpreter's Company and ID to proceed.",
+      "category": "3rd Party"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer wants to speak with their spouse about the account. What must happen BEFORE you talk to the spouse?",
+      "options": [
+        "The spouse must provide the user's SSN",
+        "The user must authenticate alone and give explicit permission",
+        "Nothing, spouses have automatic permission",
+        "The user must mail in a signed permission form"
+      ],
+      "correct": 1,
+      "explanation": "We must speak with the user on their own first, authenticate them, and get their permission to speak with the 3rd party.",
+      "category": "3rd Party"
+    },
+    {
+      "type": "mc",
+      "question": "What is the rule for sharing sensitive information like a full SSN or DOB on file?",
+      "options": [
+        "Share it only if the user is authenticated",
+        "Never share it directly; confirm the last 4 if necessary",
+        "Share it only via phone, never email",
+        "Only share if the customer is super angry"
+      ],
+      "correct": 1,
+      "explanation": "Even if authenticated, do not share sensitive info like SSN or DOB.",
+      "category": "Sensitive Data"
+    },
+    {
+      "type": "scenario",
+      "question": "An authenticated user needs their full Direct Deposit routing number. What is the correct protocol?",
+      "options": [
+        "Provide the full number immediately",
+        "Guide the user to find the information in-app",
+        "Tell them we don't have that information",
+        "Ask them to complete Persona again"
+      ],
+      "correct": 1,
+      "explanation": "Guide the user to find Direct Deposit info in-app. You can confirm the last 4 digits of the account number, but not the full numbers.",
+      "category": "Sensitive Data"
+    },
+    {
+      "type": "mc",
+      "question": "How long does a Persona verification remain valid for use across different tickets?",
+      "options": [
+        "24 hours",
+        "48 hours",
+        "7 days",
+        "30 days"
       ],
       "correct": 2,
-      "explanation": "If authentication fails after multiple attempts, escalate to T3 for further review. Never share account information without proper authentication.",
+      "explanation": "Persona verification is valid for 7 days.",
+      "category": "Persona"
+    },
+    {
+      "type": "mc",
+      "question": "Which Persona status indicates the user missed the 24-hour window to complete verification?",
+      "options": [
+        "Pending",
+        "Declined",
+        "Expired",
+        "Created"
+      ],
+      "correct": 2,
+      "explanation": "'Expired' means the user missed the 24-hour window for the Persona link.",
+      "category": "Persona"
+    },
+    {
+      "type": "scenario",
+      "question": "If you are unable to verify a user even after providing general information, what is the final step?",
+      "options": [
+        "Close the account",
+        "Escalate to Tier 3 with the #Kikoff::General::T3 Escalation macro",
+        "Tell them to call back tomorrow",
+        "Delete the ticket"
+      ],
+      "correct": 1,
+      "explanation": "If unable to verify, provide general help, then escalate to T3 using the #Kikoff::General::T3 Escalation macro.",
       "category": "Escalation"
+    },
+    {
+      "type": "mc",
+      "question": "What should you never do when a caller provides information that doesn't match our records?",
+      "options": [
+        "Ask them to reconfirm their info",
+        "Indicate specifically which piece of info did not match",
+        "Redirect them to email support",
+        "Answer general questions"
+      ],
+      "correct": 1,
+      "explanation": "We can give them a chance to reconfirm, but we should NEVER indicate what information provided does not match.",
+      "category": "Voice"
     }
   ]
 };
