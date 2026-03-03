@@ -131,7 +131,7 @@ const QUIZ_DATA = {
         "'I am so sorry to hear that, I feel terrible that you are struggling.'"
       ],
       "correct": 2,
-      "explanation": "Procedure mandates using the structure: 'It is (feeling) because (reason of feeling)'. You should avoid phrases like 'I know' or 'I understand' [cite: 83] and never use the word 'guideline'[cite: 85].",
+      "explanation": "Procedure mandates using the structure: 'It is (feeling) because (reason of feeling)'. [cite: 78] You should avoid phrases like 'I know' or 'I understand' [cite: 83] and never use the word 'guideline'. [cite: 85]",
       "category": "Soft Skills"
     },
     {
@@ -144,7 +144,7 @@ const QUIZ_DATA = {
         "3"
       ],
       "correct": 1,
-      "explanation": "Rewards in AdminTool are entered using cents ($0.01). Therefore, a $3.01 discount must be entered as 301[cite: 181, 183, 184].",
+      "explanation": "Rewards in AdminTool are entered using cents ($0.01). [cite: 183] Therefore, a $3.01 discount must be entered as 301. [cite: 181, 184]",
       "category": "Technical Execution"
     },
     {
@@ -157,7 +157,7 @@ const QUIZ_DATA = {
         "Recommend they downgrade to the Basic Plan."
       ],
       "correct": 2,
-      "explanation": "When a customer states they lost their job, you must skip the discount offer and move directly to manual closure[cite: 20, 22].",
+      "explanation": "When a customer states they lost their job, you must skip the discount offer and move directly to manual closure. [cite: 20, 22]",
       "category": "Logic Flow"
     },
     {
@@ -170,7 +170,7 @@ const QUIZ_DATA = {
         "Deactivated"
       ],
       "correct": 1,
-      "explanation": "In CST, under 'update account information,' you must change the status to 'Cancel w/ Refund' and set the active flag to 'No'.",
+      "explanation": "In CST, under 'update account information,' you must change the status to 'Cancel w/ Refund' and set the active flag to 'No'. [cite: 290]",
       "category": "Technical Execution"
     },
     {
@@ -183,7 +183,7 @@ const QUIZ_DATA = {
         "#Kikoff::CA Offboarding::Close CA CBL SC"
       ],
       "correct": 3,
-      "explanation": "If a user has all three products active, use the #Kikoff::CA Offboarding::Close CA CBL SC macro[cite: 228, 229].",
+      "explanation": "If a user has all three products active, use the #Kikoff::CA Offboarding::Close CA CBL SC macro. [cite: 228, 229]",
       "category": "Macros"
     },
     {
@@ -196,7 +196,7 @@ const QUIZ_DATA = {
         "The agent does not have access to AdminTool."
       ],
       "correct": 1,
-      "explanation": "SC closure is blocked if there is a negative balance, pending dispute, pending transaction, or pending transfer[cite: 279].",
+      "explanation": "SC closure is blocked if there is a negative balance, pending dispute, pending transaction, or pending transfer. ",
       "category": "Technical Execution"
     },
     {
@@ -209,7 +209,7 @@ const QUIZ_DATA = {
         "N/A"
       ],
       "correct": 1,
-      "explanation": "If you did not issue a refund, you must ensure 'Reverse all transactions' is set to 'No'[cite: 250].",
+      "explanation": "If you did not issue a refund, you must ensure 'Reverse all transactions' is set to 'No'. [cite: 250]",
       "category": "Technical Execution"
     },
     {
@@ -222,21 +222,8 @@ const QUIZ_DATA = {
         "Wait for the customer to call back."
       ],
       "correct": 2,
-      "explanation": "If disconnected, you must send an outbound email using the #Kikoff::CA Offboarding::Close Account Call Follow-Up macro to confirm they still want to proceed[cite: 66, 67].",
+      "explanation": "If disconnected, you must send an outbound email using the #Kikoff::CA Offboarding::Close Account Call Follow-Up macro to confirm they still want to proceed. [cite: 66, 67]",
       "category": "Logic Flow"
-    },
-    {
-      "type": "scenario",
-      "question": "A customer says, 'I thought this was a credit card I could use at the grocery store.' Which objection type is this?",
-      "options": [
-        "Financial",
-        "Value",
-        "Results",
-        "Expectations"
-      ],
-      "correct": 3,
-      "explanation": "Statements like 'I thought it was a credit card' fall under the 'Expectations' objection type[cite: 153, 155].",
-      "category": "Soft Skills"
     },
     {
       "type": "mc",
@@ -248,8 +235,47 @@ const QUIZ_DATA = {
         "$3.01 off"
       ],
       "correct": 2,
-      "explanation": "Premium and Ultimate users are offered a discount of $5.00 off their next payment[cite: 33, 52, 111].",
+      "explanation": "Premium and Ultimate users are offered a discount of $5.00 off their next payment. [cite: 33, 52, 111]",
       "category": "Macros"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer on an Ultimate plan wants to cancel because they 'don't use the features.' Before offering a discount, what is the recommended step?",
+      "options": [
+        "Close the account immediately to respect their time.",
+        "Offer to downgrade their account to the Basic Plan.",
+        "Ignore the comment and offer the $5.00 discount.",
+        "Transfer the call to a supervisor."
+      ],
+      "correct": 1,
+      "explanation": "If a customer is on a Premium or Ultimate plan and has financial or value concerns, you should first offer a downgrade to the Basic Plan. [cite: 29, 30, 143, 144]",
+      "category": "Retention Flow"
+    },
+    {
+      "type": "mc",
+      "question": "What must be entered in the 'Additional Comments' box when processing a manual closure in AdminTool?",
+      "options": [
+        "The customer's reason for closing.",
+        "The ZenDesk ticket ID.",
+        "Your agent name and ID.",
+        "The date of the request."
+      ],
+      "correct": 1,
+      "explanation": "When performing a manual closure, you must check 'User Request' for the reason and link the ZenDesk ticket ID in the additional comments. [cite: 248]",
+      "category": "Manual Closure"
+    },
+    {
+      "type": "mc",
+      "question": "You find an 'Ongoing Dispute' while checking a Secured Card (SC) for closure. How long might the customer have to wait for the dispute to resolve before closure?",
+      "options": [
+        "Up to 7 business days.",
+        "Up to 30 days.",
+        "Up to 90 days.",
+        "Disputes do not block account closure."
+      ],
+      "correct": 2,
+      "explanation": "Accounts with active disputes cannot be closed until the dispute is resolved, which may take up to 90 days. [cite: 283]",
+      "category": "Secured Card"
     }
   ]
 };
