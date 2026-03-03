@@ -119,137 +119,137 @@
 <script>
 // QUIZ DATA - Replace this with actual quiz data
 const QUIZ_DATA = {
-  "title": "Account Closure Procedures",
+  "title": "Kikoff Account Closure Mastery",
   "questions": [
     {
       "type": "scenario",
-      "question": "A customer says they lost their job and needs to cancel immediately. What should you do?",
+      "question": "A customer on a Basic Plan is frustrated and says, 'I can't afford this anymore.' According to the 'Do's and Don'ts' of Empathy, how should you structure your response?",
       "options": [
-        "Offer them a discount to stay",
-        "Skip the discount offer and proceed directly to manual closure",
-        "Transfer them to a retention specialist",
-        "Ask them to try Kikoff for one more month"
+        "'I know how you feel, let's see if we can get you a discount.'",
+        "'I understand this is a guideline we have to follow for closures.'",
+        "'It is stressful to manage expenses because your budget is tight right now.'",
+        "'I am so sorry to hear that, I feel terrible that you are struggling.'"
       ],
-      "correct": 1,
-      "explanation": "Per procedures: when a customer states they lost their job, you should skip the discount offer and proceed directly to manual closure. Respect their financial hardship.",
-      "category": "Closure Flow"
+      "correct": 2,
+      "explanation": "Procedure mandates using the structure: 'It is (feeling) because (reason of feeling)'. You should avoid phrases like 'I know' or 'I understand' [cite: 83] and never use the word 'guideline'[cite: 85].",
+      "category": "Soft Skills"
     },
     {
       "type": "mc",
-      "question": "Which macro should you use when a customer accepts a discount offer to keep their account?",
+      "question": "When applying a celebration reward discount for a Basic Plan user in AdminTool, what value must you enter to provide the correct $3.01 discount?",
       "options": [
-        "#Kikoff::CA Offboarding::Close CA",
-        "#Kikoff::CA Offboarding::Discount Accepted",
-        "#Kikoff::CA Offboarding::Manual Closure",
-        "#Kikoff::General::T3 Escalation"
+        "3.01",
+        "301",
+        "300",
+        "3"
       ],
       "correct": 1,
-      "explanation": "When a customer accepts the discount offer, use the #Kikoff::CA Offboarding::Discount Accepted macro.",
-      "category": "Macros"
+      "explanation": "Rewards in AdminTool are entered using cents ($0.01). Therefore, a $3.01 discount must be entered as 301[cite: 181, 183, 184].",
+      "category": "Technical Execution"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer states they have 'lost their job' and need to cancel. What is the correct protocol?",
+      "options": [
+        "Educate them on the 58-point average score increase first.",
+        "Offer the $5.00 discount immediately to help with hardship.",
+        "Skip the discount offer and proceed directly to manual closure.",
+        "Recommend they downgrade to the Basic Plan."
+      ],
+      "correct": 2,
+      "explanation": "When a customer states they lost their job, you must skip the discount offer and move directly to manual closure[cite: 20, 22].",
+      "category": "Logic Flow"
     },
     {
       "type": "mc",
-      "question": "A customer has a CA account with both a CBL and SC. Which closure macro do you use?",
+      "question": "Which specific status must you select in CST when successfully closing a Secured Card (SC)?",
+      "options": [
+        "Closed - User Request",
+        "Cancel w/ Refund",
+        "Inactive - Pending",
+        "Deactivated"
+      ],
+      "correct": 1,
+      "explanation": "In CST, under 'update account information,' you must change the status to 'Cancel w/ Refund' and set the active flag to 'No'.",
+      "category": "Technical Execution"
+    },
+    {
+      "type": "mc",
+      "question": "A customer has a Credit Account (CA), a Credit Builder Loan (CBL), and a Secured Card (SC). Which macro should be used for offboarding?",
       "options": [
         "#Kikoff::CA Offboarding::Close CA",
         "#Kikoff::CA Offboarding::Close CA CBL",
-        "#Kikoff::CA Offboarding::Close CA SC",
+        "#Kikoff::CA Offboarding::Manual Closure",
         "#Kikoff::CA Offboarding::Close CA CBL SC"
       ],
       "correct": 3,
-      "explanation": "When a customer has CA + CBL + SC, you need to use #Kikoff::CA Offboarding::Close CA CBL SC to properly close all products.",
+      "explanation": "If a user has all three products active, use the #Kikoff::CA Offboarding::Close CA CBL SC macro[cite: 228, 229].",
       "category": "Macros"
     },
     {
       "type": "mc",
-      "question": "Before offering a discount during an account closure request, what should you do first?",
+      "question": "Why would an agent be UNABLE to close a customer's Secured Card immediately?",
       "options": [
-        "Check if the customer is within their grace period",
-        "Educate the customer on the value of their plan",
-        "Ask why they want to cancel multiple times",
-        "Transfer to a supervisor"
+        "The customer has a Premium Plan.",
+        "The account has a pending transaction or a negative balance.",
+        "The customer hasn't used the card in 30 days.",
+        "The agent does not have access to AdminTool."
       ],
       "correct": 1,
-      "explanation": "The first step in the closure flow is to educate the customer on the value of their plan before offering any discounts.",
-      "category": "Closure Flow"
+      "explanation": "SC closure is blocked if there is a negative balance, pending dispute, pending transaction, or pending transfer[cite: 279].",
+      "category": "Technical Execution"
     },
     {
-      "type": "scenario",
-      "question": "A customer says 'I need every penny I have' and wants to cancel. What does this indicate?",
+      "type": "mc",
+      "question": "During a manual closure where NO refund is requested or issued, how should the 'Reverse all transactions' toggle be set?",
       "options": [
-        "They want a better deal \u2014 offer a discount",
-        "They're just testing you \u2014 push back",
-        "Financial hardship \u2014 skip discount, proceed to closure",
-        "They need to speak with a manager"
+        "Yes",
+        "No",
+        "Leave blank",
+        "N/A"
+      ],
+      "correct": 1,
+      "explanation": "If you did not issue a refund, you must ensure 'Reverse all transactions' is set to 'No'[cite: 250].",
+      "category": "Technical Execution"
+    },
+    {
+      "type": "mc",
+      "question": "If a call is disconnected before you can complete the closure, what is the next step?",
+      "options": [
+        "Close the account anyway based on the verbal request.",
+        "Mark the ticket as solved with a note about the drop.",
+        "Send an outbound email using the 'Close Account Call Follow-Up' macro.",
+        "Wait for the customer to call back."
       ],
       "correct": 2,
-      "explanation": "Statements like 'I need every penny' indicate financial hardship. Per procedures, skip the discount offer and proceed directly to closure.",
-      "category": "Closure Flow"
-    },
-    {
-      "type": "mc",
-      "question": "A customer only has a Credit Account (no CBL or SC). Which closure macro should you use?",
-      "options": [
-        "#Kikoff::CA Offboarding::Close CA",
-        "#Kikoff::CA Offboarding::Close CA CBL",
-        "#Kikoff::CA Offboarding::Close CA SC",
-        "#Kikoff::CA Offboarding::Manual Closure"
-      ],
-      "correct": 0,
-      "explanation": "For a customer with only a CA (no CBL, no SC), use #Kikoff::CA Offboarding::Close CA.",
-      "category": "Macros"
-    },
-    {
-      "type": "mc",
-      "question": "What should you do after confirming account closure?",
-      "options": [
-        "Wait for the customer to call back",
-        "Send a closure confirmation and mark the ticket as solved",
-        "Transfer to T3 for review",
-        "Do nothing \u2014 the system handles it automatically"
-      ],
-      "correct": 1,
-      "explanation": "After confirming closure, send a closure confirmation and mark the ticket as solved.",
-      "category": "Closure Flow"
+      "explanation": "If disconnected, you must send an outbound email using the #Kikoff::CA Offboarding::Close Account Call Follow-Up macro to confirm they still want to proceed[cite: 66, 67].",
+      "category": "Logic Flow"
     },
     {
       "type": "scenario",
-      "question": "A customer wants to close their CA but still has an open SC with a pending transaction. What should you do?",
+      "question": "A customer says, 'I thought this was a credit card I could use at the grocery store.' Which objection type is this?",
       "options": [
-        "Close everything at once using Close CA CBL SC",
-        "Close the CA first, then handle SC closure separately after pending transactions resolve",
-        "Tell the customer to come back later",
-        "Escalate to T3 immediately"
+        "Financial",
+        "Value",
+        "Results",
+        "Expectations"
       ],
-      "correct": 1,
-      "explanation": "If unable to close the SC due to pending transactions, handle SC closure separately. Close the CA first and address the SC once pending transactions clear.",
-      "category": "Closure Flow"
+      "correct": 3,
+      "explanation": "Statements like 'I thought it was a credit card' fall under the 'Expectations' objection type[cite: 153, 155].",
+      "category": "Soft Skills"
     },
     {
       "type": "mc",
-      "question": "Which macro is used for educating Premium or Ultimate plan customers about their plan value during a closure request?",
+      "question": "What is the specific discount amount offered to Premium or Ultimate plan customers to encourage them to stay?",
       "options": [
-        "#Kikoff::CA Offboarding::Close Acc Educate Basic",
-        "#Kikoff::CA Offboarding::Close Acc Educate PremUlt",
-        "#Kikoff::CA Offboarding::Discount Accepted",
-        "#Kikoff::CA Offboarding::Close Account Call Follow-Up"
+        "60% off",
+        "$1.99 fixed rate",
+        "$5.00 off",
+        "$3.01 off"
       ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::CA Offboarding::Close Acc Educate PremUlt when educating Premium or Ultimate customers about the value of their plan.",
+      "correct": 2,
+      "explanation": "Premium and Ultimate users are offered a discount of $5.00 off their next payment[cite: 33, 52, 111].",
       "category": "Macros"
-    },
-    {
-      "type": "scenario",
-      "question": "A customer wants to cancel but you sense they might stay if offered a discount. They haven't mentioned financial hardship. What's the correct flow?",
-      "options": [
-        "Skip the education and go straight to the discount",
-        "Educate on plan value first, then offer a discount if they still want to cancel",
-        "Close the account immediately \u2014 don't waste their time",
-        "Transfer to a retention specialist"
-      ],
-      "correct": 1,
-      "explanation": "The correct flow is: first educate on plan value, then offer a discount if appropriate. Only skip the discount offer if the customer states financial hardship.",
-      "category": "Closure Flow"
     }
   ]
 };
