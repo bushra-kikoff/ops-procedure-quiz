@@ -85,7 +85,7 @@
     <h2>Ready to test your knowledge?</h2>
     <p>This quiz covers the <strong>Updating PII (Personal Information)</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
     <div class="start-info">
-      <div class="start-info-item"><div class="num" id="totalQNum">5</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num" id="totalQNum">8</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
       <div class="start-info-item"><div class="num" id="difficultyDisplay">Easy</div><div class="lbl">Difficulty</div></div>
     </div>
@@ -118,73 +118,112 @@
 
 <script>
 // QUIZ DATA - Replace this with actual quiz data
-const QUIZ_DATA = {
+cconst QUIZ_DATA = {
   "title": "Updating PII (Personal Information)",
   "questions": [
     {
-      "type": "mc",
-      "question": "What must you do before making any PII changes to a customer's account?",
+      "type": "scenario",
+      "question": "A customer reaches out to update their address manually because they are struggling with the app. According to the 'Accepted Documents' policy, what is the most important criteria for their supporting document?",
       "options": [
-        "Check their credit score",
-        "Authenticate the customer",
-        "Get T3 approval",
-        "Ask for a screenshot of their ID"
-      ],
-      "correct": 1,
-      "explanation": "Always authenticate the customer before making any personal information changes to their account.",
-      "category": "Process"
-    },
-    {
-      "type": "mc",
-      "question": "A customer wants to update their phone number. Can they do it themselves?",
-      "options": [
-        "No, only agents can update phone numbers",
-        "Yes, phone number and address updates can be self-served",
-        "Only if they have the Ultimate plan",
-        "Only through email"
-      ],
-      "correct": 1,
-      "explanation": "Phone number and address updates can be self-served by the customer. Use #Kikoff::Account Maintenance::Update Phone Number/Address (Self-Serve).",
-      "category": "Process"
-    },
-    {
-      "type": "mc",
-      "question": "A customer needs to update their DOB or SSN. What should you do?",
-      "options": [
-        "Update it directly in AdminTool",
-        "Request documentation and escalate the change",
-        "Tell them it can't be changed",
-        "Ask them to create a new account"
-      ],
-      "correct": 1,
-      "explanation": "DOB/SSN changes require documentation and must be escalated. Use #Kikoff::Account Maintenance::Update DOB/SSN Request.",
-      "category": "Process"
-    },
-    {
-      "type": "mc",
-      "question": "After completing a PII update, what should you do?",
-      "options": [
-        "Close the ticket immediately",
-        "Confirm the updates with the customer and create an internal note",
-        "Transfer to T3 for review",
-        "Ask the customer to log out and back in"
-      ],
-      "correct": 1,
-      "explanation": "Always confirm all updates with the customer and create internal notes for tracking sensitive PII changes.",
-      "category": "Process"
-    },
-    {
-      "type": "mc",
-      "question": "What documentation is needed for an address update?",
-      "options": [
-        "No documentation needed \u2014 it's self-serve",
-        "A passport only",
-        "Acceptable documents as specified in the procedures",
-        "A utility bill and driver's license"
+        "It must show the NEW address they are moving to",
+        "It must be a Kikoff statement from the last 30 days",
+        "It must show the OLD address currently on their Kikoff account",
+        "It must be a screenshot of their updated Driver's License"
       ],
       "correct": 2,
-      "explanation": "Address updates may require acceptable documentation. Use #Kikoff::Account Maintenance::Accepted Documents for Address Update to inform the customer what's needed.",
-      "category": "Process"
+      "explanation": "To protect account security, documentation for an address update must show the OLD address on the Kikoff account, not the new one.",
+      "category": "Address Updates"
+    },
+    {
+      "type": "mc",
+      "question": "A customer provides a utility bill to update their PII. To be considered valid, the document must be dated within how many days?",
+      "options": [
+        "30 days",
+        "60 days",
+        "90 days",
+        "180 days"
+      ],
+      "correct": 2,
+      "explanation": "All accepted documents for account maintenance must be dated within the last 90 days[cite: 327].",
+      "category": "Documentation"
+    },
+    {
+      "type": "scenario",
+      "question": "A user wants to update their Social Security Number (SSN). What is the correct escalation path for a Tier 2 (T2) agent?",
+      "options": [
+        "Update the SSN in AdminTool and notify the user",
+        "Verify the documents, paste the 'Update SSN Internal' note, and escalate to Tier 3 (T3)",
+        "Send the 'Update PII Confirm Update' macro immediately",
+        "Tell the user SSNs cannot be updated under any circumstances"
+      ],
+      "correct": 1,
+      "explanation": "SSN updates require escalation. T2 must verify the documents, fill out the internal note, and escalate to T3 for the final update[cite: 317, 398, 401].",
+      "category": "Escalation"
+    },
+    {
+      "type": "mc",
+      "question": "Which of the following documents is NOT accepted for an SSN update request?",
+      "options": [
+        "Social Security card",
+        "U.S. passport or passport card",
+        "A Kikoff Account Statement",
+        "State-issued ID or driver's license showing SSN"
+      ],
+      "correct": 2,
+      "explanation": "Accepted documents for SSN changes must be external. Kikoff statements are specifically listed as non-accepted documents for address/PII updates [cite: 328, 392-395].",
+      "category": "Documentation"
+    },
+    {
+      "type": "mc",
+      "question": "When a user successfully completes a Persona verification for a Name or DOB change, what are the specific criteria the agent must check before using AdminTool?",
+      "options": [
+        "The ID must be a physical ID (not a screenshot) and the face in the selfie must match the ID",
+        "The user must have an active Ultimate plan",
+        "The credit score must be above 600",
+        "The user must provide a utility bill dated within 30 days"
+      ],
+      "correct": 0,
+      "explanation": "Agents must ensure the ID is physical, not expired, and that the name, DOB, and selfie match the account and ID provided [cite: 372-376].",
+      "category": "Verification"
+    },
+    {
+      "type": "mc",
+      "question": "A customer needs to update their Name due to a marriage. What documentation is specifically required alongside their Persona verification?",
+      "options": [
+        "A utility bill and a bank statement",
+        "A marriage certificate, divorce decree, or official name change document",
+        "A pay stub or employment letter",
+        "No documentation is needed for name changes"
+      ],
+      "correct": 1,
+      "explanation": "Name changes require specific legal documentation such as a marriage certificate or divorce decree[cite: 364].",
+      "category": "Name Changes"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer is struggling to update their phone number in the app. Which macro provides the step-by-step instructions for self-service?",
+      "options": [
+        "#Kikoff::Account Maintenance::Update PII Persona Request",
+        "#Kikoff::Account Maintenance::Update PII Confirm Update",
+        "#Kikoff::Account Maintenance::Update Phone Number/Address (Self-Serve)",
+        "#Kikoff::Account Maintenance::Update SSN Request"
+      ],
+      "correct": 2,
+      "explanation": "The self-serve macro guides the user to the 'Account' tab and the pencil icon to update their phone number or address [cite: 347-353].",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "When an agent updates information in AdminTool, where is the 'Edit Info' section located?",
+      "options": [
+        "In the top search bar",
+        "On the right-hand side under 'History'",
+        "On the left bar of the user's token page",
+        "Under the 'Internal Notes' section"
+      ],
+      "correct": 2,
+      "explanation": "In AdminTool, you find the user's token and select 'Edit Info' from the left bar to update their details[cite: 378, 379].",
+      "category": "Technical"
     }
   ]
 };
