@@ -132,6 +132,19 @@ const QUIZ_DATA = {
       "explanation": "To ensure no failure reasons are missed, agents should check the IDV and reverification sections and use keyboard shortcuts (Cmd/Ctrl + F) to search the Raw data.",
       "category": "Troubleshooting"
     },
+   {
+      "type": "scenario",
+      "question": "A user failed IDV (not from a bad code), and you notice their last verification attempt was 7 months ago. What is the correct first step?",
+      "options": [
+        "Send the dead end flow macro immediately",
+        "Send the user to retry first",
+        "Escalate the case to the internal fraud team",
+        "Tell the user they must wait another 6 months"
+      ],
+      "correct": 1,
+      "explanation": "If a user failed IDV (but not from a bad code) and their last verification was more than 6 months ago, you must send them to retry first before considering a dead end flow.",
+      "category": "Process"
+    },
     {
       "type": "mc",
       "question": "A customer fails IDV with code 4001 (SSN reported deceased). Can this code be overridden or manually passed?",
