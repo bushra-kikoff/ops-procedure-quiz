@@ -75,7 +75,7 @@
     <h1 id="quizTitle">Updating PII (Personal Information)</h1>
     <div class="meta">
       <span>Account Maintenance</span>
-      <span id="questionCountMeta">8 Questions</span>
+      <span id="questionCountMeta">10 Questions</span>
     </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -84,7 +84,7 @@
     <h2>Ready to test your knowledge?</h2>
     <p>This quiz covers the <strong>Updating PII (Personal Information)</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
     <div class="start-info">
-      <div class="start-info-item"><div class="num" id="totalQNum">8</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num" id="totalQNum">10</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
     </div>
     <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
@@ -222,6 +222,32 @@ const QUIZ_DATA = {
       "correct": 2,
       "explanation": "In AdminTool, you find the user's token and select 'Edit Info' from the left bar to update their details[cite: 378, 379].",
       "category": "Technical"
+    },
+   {
+      "type": "scenario",
+      "question": "When should you use the '#Kikoff::Account Maintenance::Update PII Persona Request' macro instead of sending the 'Self-Serve' macro?",
+      "options": [
+        "For every PII update request to ensure maximum security",
+        "Only when a customer wants to update their Social Security Number",
+        "When a user is struggling to self-serve OR wants to change their Name or DOB",
+        "Only if the customer is on a Premium or Ultimate plan"
+      ],
+      "correct": 2,
+      "explanation": "While we always send users to self-serve first for phone and address updates [cite: 310], the Persona Request macro is used if they struggle with the app or specifically need to change their Name or DOB.",
+      "category": "Process Logic"
+    },
+   {
+      "type": "scenario",
+      "question": "You have just successfully updated a user's Name in AdminTool after verifying their Persona and marriage certificate. Which macro should you send to the customer?",
+      "options": [
+        "#Kikoff::Account Maintenance::Update PII Persona Request",
+        "#Kikoff::Account Maintenance::Update Phone Number/Address (Self-Serve)",
+        "#Kikoff::Account Maintenance::Update PII Confirm Update",
+        "#Kikoff::Account Maintenance::Update SSN Request"
+      ],
+      "correct": 2,
+      "explanation": "Once you have successfully made the change in AdminTool, send the #Kikoff::Account Maintenance::Update PII Confirm Update macro to let the user know the change is complete.",
+      "category": "Macros"
     }
   ]
 };
