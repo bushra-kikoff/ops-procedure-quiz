@@ -75,8 +75,7 @@
     <h1 id="quizTitle">CA Payment Procedures</h1>
     <div class="meta">
       <span>Credit Account</span>
-      <span>Difficulty: Medium</span>
-      <span id="questionCountMeta">8 Questions</span>
+      <span id="questionCountMeta">13 Questions</span>
     </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -85,9 +84,8 @@
     <h2>Ready to test your knowledge?</h2>
     <p>This quiz covers the <strong>CA Payment Procedures</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
     <div class="start-info">
-      <div class="start-info-item"><div class="num" id="totalQNum">8</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num" id="totalQNum">13</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
-      <div class="start-info-item"><div class="num" id="difficultyDisplay">Med</div><div class="lbl">Difficulty</div></div>
     </div>
     <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
   </div>
@@ -173,33 +171,33 @@ const QUIZ_DATA = {
       "explanation": "Partial payments may not be available for all users. Check if the feature is available for their account before proceeding.",
       "category": "Payment Knowledge"
     },
-    {
-      "type": "mc",
-      "question": "What is the difference between the Auto-Renew Inquiry and Autopay Inquiry macros?",
-      "options": [
-        "They are the same thing",
-        "Auto-Renew is about plan subscription renewal; Autopay is about monthly payment scheduling",
-        "Auto-Renew is for SC; Autopay is for CA",
-        "Auto-Renew is for Premium; Autopay is for Ultimate"
-      ],
-      "correct": 1,
-      "explanation": "Auto-Renew handles plan subscription renewal questions, while Autopay handles monthly payment scheduling and automation.",
-      "category": "Payment Knowledge"
-    },
-    {
+   {
       "type": "scenario",
-      "question": "A customer wants to pay off their Credit Account early. They have access to the pay early feature. Which macro should you use?",
+      "question": "A customer has paid their account in full early. You check the 'Current Balance' in the Credit Account section of Admin, but it still shows a balance. Where should you check to verify the actual prepaid funds?",
       "options": [
-        "#Kikoff::CA::Partial payment",
-        "#Kikoff::CA::Pay off CA in full/early",
-        "#Kikoff::CA::Within grace period",
-        "#Kikoff::CA::Autopay Inquiry"
+        "AdminTool > Payment History PDF",
+        "Metabase > Transaction Investigation > Pre Payment Wallet",
+        "Zendesk Internal Notes",
+        "The customer's linked bank statement"
       ],
       "correct": 1,
-      "explanation": "Use #Kikoff::CA::Pay off CA in full/early to guide customers through the early payoff process.",
-      "category": "Macros"
+      "explanation": "A 'Paid in Full' status won't be visible in the Current Balance section immediately. You must check the 'Pre Payment Wallet' in Metabase [cite: 1132-1133, 1137-1138].",
+      "category": "Investigation"
     },
-    {
+   {
+      "type": "mc",
+      "question": "In Metabase, what does the transaction type 'Fund Wallet' indicate?",
+      "options": [
+        "A payment was made from the wallet to the Credit Account",
+        "A user made an early partial or full payment to their prepayment wallet",
+        "A refund was issued to the customer",
+        "An autopay attempt was successful"
+      ],
+      "correct": 1,
+      "explanation": "'Fund Wallet' means the user added money to their prepayment wallet. 'Credit Line Payment' is when funds move from the wallet to the account [cite: 1144-1145].",
+      "category": "Investigation"
+    },
+   {
       "type": "mc",
       "question": "A customer has already paid early and you need to confirm. Which macro applies?",
       "options": [
@@ -214,16 +212,82 @@ const QUIZ_DATA = {
     },
     {
       "type": "mc",
-      "question": "What is the first step when handling any payment-related inquiry?",
+      "question": "What is the difference between the Auto-Renew Inquiry and Autopay Inquiry macros?",
       "options": [
-        "Apply the macro immediately",
-        "Check the customer's credit score",
-        "Identify the payment issue and check the account status in AdminTool",
-        "Transfer to a payment specialist"
+        "They are the same thing",
+        "Auto-Renew is about plan subscription renewal; Autopay is about monthly payment scheduling",
+        "Auto-Renew is for SC; Autopay is for CA",
+        "Auto-Renew is for Premium; Autopay is for Ultimate"
+      ],
+      "correct": 1,
+      "explanation": "Auto-Renew handles plan subscription renewal questions, while Autopay handles monthly payment scheduling and automation.",
+      "category": "Payment Knowledge"
+    },
+  
+    {
+      "type": "scenario",
+      "question": "A customer wants to pay off their Credit Account early. They have access to the pay early feature. Which macro should you use?",
+      "options": [
+        "#Kikoff::CA::Partial payment",
+        "#Kikoff::CA::Pay off CA in full/early",
+        "#Kikoff::CA::Within grace period",
+        "#Kikoff::CA::Autopay Inquiry"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::CA::Pay off CA in full/early to guide customers through the early payoff process.",
+      "category": "Macros"
+    },
+   {
+      "type": "mc",
+      "question": "Which Kikoff plan is the ONLY one currently eligible to pay off their entire Credit Account balance in full?",
+      "options": [
+        "Basic Plan",
+        "Premium Plan",
+        "Ultimate Plan",
+        "All plans are eligible if they are not delinquent"
       ],
       "correct": 2,
-      "explanation": "Always identify the specific payment issue and check the customer's account status in AdminTool before applying any macro.",
-      "category": "Payment Knowledge"
+      "explanation": "The 'Pay in Full' feature is only available to Ultimate users who have already paid off their current statement[cite: 1116].",
+      "category": "Pay in Full"
+    },
+   {
+      "type": "scenario",
+      "question": "A user is 20 days late on a payment but still within the 'one-month grace period.' What should you tell them about credit bureau reporting?",
+      "options": [
+        "The late payment will be reported tomorrow if not paid.",
+        "Their score has already dropped by 50 points.",
+        "The payment has not been reported yet and will be 'on-time' if paid before the next due date.",
+        "They must pay a $5 late fee to avoid reporting."
+      ],
+      "correct": 2,
+      "explanation": "Kikoff provides a one-month grace period; payments are reported as on-time as long as they are made before the next due date [cite: 995-997].",
+      "category": "Grace Period"
+    },
+   {
+      "type": "mc",
+      "question": "Can a user downgrade their Kikoff plan after they have chosen to pay their balance in full?",
+      "options": [
+        "Yes, at any time",
+        "Yes, but only to the Premium plan",
+        "No, you cannot downgrade your plan once you pay in full",
+        "Only if they have a 'Test' flag in Metabase"
+      ],
+      "correct": 2,
+      "explanation": "Documentation states: 'You can not downgrade your plan once you pay in full'[cite: 1122].",
+      "category": "Pay in Full"
+    },
+   {
+      "type": "mc",
+      "question": "If a user pays in full and later decides to close their account, what happens to their unused prepaid balance?",
+      "options": [
+        "It is forfeited as a processing fee",
+        "It is applied to their next Kikoff product automatically",
+        "Any unused prepaid balance will be refunded",
+        "It stays in the wallet for 12 months"
+      ],
+      "correct": 2,
+      "explanation": "If a user closes their account, any unused prepaid balance in their wallet will be refunded[cite: 1124].",
+      "category": "Pay in Full"
     }
   ]
 };
