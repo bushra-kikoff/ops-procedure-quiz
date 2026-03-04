@@ -75,8 +75,7 @@
     <h1 id="quizTitle">Refund Procedures</h1>
     <div class="meta">
       <span>Offboarding</span>
-      <span>Difficulty: Easy</span>
-      <span id="questionCountMeta">5 Questions</span>
+      <span id="questionCountMeta">10 Questions</span>
     </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -85,9 +84,8 @@
     <h2>Ready to test your knowledge?</h2>
     <p>This quiz covers the <strong>Refund Procedures</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
     <div class="start-info">
-      <div class="start-info-item"><div class="num" id="totalQNum">5</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num" id="totalQNum">10</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
-      <div class="start-info-item"><div class="num" id="difficultyDisplay">Easy</div><div class="lbl">Difficulty</div></div>
     </div>
     <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
   </div>
@@ -119,72 +117,137 @@
 <script>
 // QUIZ DATA - Replace this with actual quiz data
 const QUIZ_DATA = {
-  "title": "Refund Procedures",
+  "title": "Refund Procedures & Eligibility Mastery",
   "questions": [
     {
       "type": "mc",
-      "question": "A customer requests a refund but is not eligible. What macro should you use?",
+      "question": "What is the primary timeframe used to determine if a standard account opening or renewal is eligible for a refund?",
       "options": [
-        "#Kikoff::CA Offboarding::Refund Manual Close",
-        "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible)",
-        "#Kikoff::General::T3 Escalation",
-        "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request"
+        "Within 14 days",
+        "Within 30 days",
+        "Within 45 days",
+        "Within 90 days"
       ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::CA Offboarding::Manual Closure (Refund Ineligible) and explain why they are ineligible.",
-      "category": "Macros"
+      "correct": 2,
+      "explanation": "Standard eligibility for both new accounts and renewals is less than 45 days[cite: 1075, 1136].",
+      "category": "Eligibility"
     },
     {
       "type": "scenario",
-      "question": "A customer has extenuating circumstances (medical emergency, etc.). What macro applies?",
+      "question": "A customer is past the 45-day window but claims a technical bug or a back-reporting error warrants a refund. What is the correct flow for this escalation?",
       "options": [
-        "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible)",
-        "#Kikoff::CA Offboarding::Refund Manual Close",
-        "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request",
-        "#Kikoff::General::T2 Escalation"
+        "Process the refund immediately in AdminTool and then notify T3",
+        "Tell the user we cannot refund back-reporting errors under any circumstances",
+        "Ask the user for proof of the issue/bug, then escalate the case to T3",
+        "Send the 'Extenuating Circumstance' macro and solve the ticket"
       ],
       "correct": 2,
-      "explanation": "For extenuating circumstances, use #Kikoff::CA Offboarding::Extenuating Circumstance Refund Request.",
-      "category": "Macros"
-    },
-    {
-      "type": "mc",
-      "question": "What should you check FIRST when a customer requests a refund?",
-      "options": [
-        "Their credit score",
-        "Refund eligibility in AdminTool",
-        "How long they've been a customer",
-        "Their payment method"
-      ],
-      "correct": 1,
-      "explanation": "Always check refund eligibility in AdminTool first before proceeding with any refund-related actions.",
-      "category": "Refund Process"
-    },
-    {
-      "type": "mc",
-      "question": "A refund has been approved. Which macro do you use to process it?",
-      "options": [
-        "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible)",
-        "#Kikoff::CA Offboarding::Refund Manual Close",
-        "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request",
-        "#Kikoff::General::T2 Escalation"
-      ],
-      "correct": 1,
-      "explanation": "For approved refunds, use #Kikoff::CA Offboarding::Refund Manual Close to process the refund.",
-      "category": "Macros"
+      "explanation": "For technical issues, bugs, or back-reporting refund requests, agents must first obtain proof from the user before escalating to Tier 3[cite: 1071, 1173, 1174].",
+      "category": "Escalation Policy"
     },
     {
       "type": "scenario",
-      "question": "A customer is pushing back hard after being told they're ineligible for a refund and demands a manager. What should you do?",
+      "question": "A user experienced a large, unexpected auto-pay debit and states they now cannot afford basic necessities like food or rent. What is the correct procedure?",
       "options": [
-        "Give them the refund to avoid escalation",
-        "End the conversation",
-        "Escalate to T3 using the T3 Escalation macro",
-        "Tell them there's nothing else you can do"
+        "Deny the refund because they are past the 45-day guarantee",
+        "Send the 'Extenuating Circumstance Refund Request' macro and submit the ticket as OPEN",
+        "Manually refund the amount and set 'Reverse all transactions' to Yes",
+        "Tell the user to contact their bank to dispute the large debit"
+      ],
+      "correct": 1,
+      "explanation": "When a large auto-pay debit causes extreme hardship (unemployment, inability to afford necessities), use the Extenuating Circumstance macro and keep the ticket OPEN for review.",
+      "category": "Escalation Policy"
+    },
+    {
+      "type": "mc",
+      "question": "Which of these scenarios should be DENIED by T1/T2 and NOT sent to T3 for a refund review?",
+      "options": [
+        "A user who was never notified of a renewal (verified in Metabase)",
+        "A user who is confused about how the product works and wants their money back",
+        "A user reporting a technical bug with a screenshot for proof",
+        "A user whose last available funds were taken in a large auto-pay debit"
+      ],
+      "correct": 1,
+      "explanation": "General confusion or simple requests for money back should be denied at the T1/T2 level and should not be escalated.",
+      "category": "Escalation Policy"
+    },
+    {
+      "type": "mc",
+      "question": "Where should you check to verify if a renewal reminder was sent before considering a refund for a 'forgotten' renewal?",
+      "options": [
+        "AdminTool Audit Log",
+        "The 'User Communications History' in the Transaction Investigation Metabase",
+        "Zendesk Ticket Events",
+        "The customer's bank statement"
+      ],
+      "correct": 1,
+      "explanation": "Always validate renewal notification claims in the 'User Communications History' Metabase tab[cite: 1087, 1090, 1091].",
+      "category": "Technical Investigation"
+    },
+    {
+      "type": "mc",
+      "question": "When performing a manual closure for a user who is INELIGIBLE for a refund, how must the 'Reverse all transactions' toggle be set in AdminTool?",
+      "options": [
+        "Yes",
+        "No",
+        "Leave blank",
+        "Always Yes for closures"
+      ],
+      "correct": 1,
+      "explanation": "If no refund is being issued, you must ensure 'Reverse all transactions' is set to NO[cite: 1100, 1108].",
+      "category": "Technical Execution"
+    },
+    {
+      "type": "mc",
+      "question": "What is the expected response time you should provide to a customer when escalating an extenuating circumstance refund request?",
+      "options": [
+        "24 hours",
+        "1-3 business days",
+        "7-10 business days",
+        "30 days"
+      ],
+      "correct": 1,
+      "explanation": "The Extenuating Circumstance macro informs the user they can expect a response in 1-3 business days[cite: 1132].",
+      "category": "Communication"
+    },
+   {
+      "type": "scenario",
+      "question": "A customer who is past the 45-day refund window asks for their money back because they were 'confused on how the product works.' What is the correct action?",
+      "options": [
+        "Escalate to T3 using the Extenuating Circumstance macro",
+        "Deny the refund request and do not send it to T3",
+        "Process the refund in AdminTool to prevent a chargeback",
+        "Ask the customer to provide a police report"
+      ],
+      "correct": 1,
+      "explanation": "For normal scenarios like product confusion or general 'money back' requests, you must deny the refund and do not escalate to Tier 3.",
+      "category": "Escalation Policy"
+    },
+    {
+      "type": "mc",
+      "question": "Which macro should be sent to a user who is ineligible for a refund and continues to push back after the initial denial?",
+      "options": [
+        "#Kikoff::CA Offboarding::Refund Manual Close",
+        "#Kikoff::CA Offboarding::Manual Closure (Refund Ineligible - Follow up)",
+        "#Kikoff::CA Offboarding::Extenuating Circumstance Refund Request",
+        "#Kikoff::General::T3 Escalation"
+      ],
+      "correct": 1,
+      "explanation": "Use the (Refund Ineligible - Follow up) macro for persistent refund requests that do not meet eligibility or hardship criteria[cite: 1120].",
+      "category": "Macros"
+    },
+   {
+      "type": "mc",
+      "question": "Which specific action in AdminTool issues the actual refund to the customer's original payment method?",
+      "options": [
+        "Clicking 'Close Account'",
+        "Selecting 'User Request' in the reason dropdown",
+        "Tapping 'Refund' on the transaction history of the latest payment",
+        "Typing 'REFUND' in the Zendesk internal note"
       ],
       "correct": 2,
-      "explanation": "If pushback or escalation is needed, use #Kikoff::General::T3 Escalation to route to management review.",
-      "category": "Escalation"
+      "explanation": "To issue a refund, you must go to the Transaction History and tap 'Refund' on the latest payment[cite: 1256, 1273].",
+      "category": "Technical Execution"
     }
   ]
 };
