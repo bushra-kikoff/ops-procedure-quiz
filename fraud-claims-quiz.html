@@ -75,7 +75,6 @@
     <h1 id="quizTitle">Fraud Claims Handling</h1>
     <div class="meta">
       <span>Offboarding</span>
-      <span>Difficulty: Medium</span>
       <span id="questionCountMeta">8 Questions</span>
     </div>
   </div>
@@ -87,7 +86,6 @@
     <div class="start-info">
       <div class="start-info-item"><div class="num" id="totalQNum">8</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
-      <div class="start-info-item"><div class="num" id="difficultyDisplay">Med</div><div class="lbl">Difficulty</div></div>
     </div>
     <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
   </div>
@@ -119,111 +117,111 @@
 <script>
 // QUIZ DATA - Replace this with actual quiz data
 const QUIZ_DATA = {
-  "title": "Fraud Claims Handling",
+  "title": "Fraud Claims: Macro & Procedure Mastery",
   "questions": [
     {
       "type": "mc",
-      "question": "What is the first thing you should do when a customer calls with a fraud claim?",
+      "question": "Which macro provides the mandatory script for handling a fraud report during a live call?",
       "options": [
-        "Immediately close their account",
-        "Verify the customer's identity",
-        "Send them an email",
-        "Transfer to a manager"
+        "#Kikoff::Offboarding::Fraud Voice Outbound Email",
+        "#Kikoff::Offboarding::Fraud Claim Voice Script",
+        "#Kikoff::CA Offboarding::Fraud Escalated",
+        "#Kikoff::CA Offboarding::Fraud Claim No Account Found"
       ],
       "correct": 1,
-      "explanation": "Always verify the customer's identity first before processing any fraud claims.",
-      "category": "Fraud Process"
-    },
-    {
-      "type": "mc",
-      "question": "You search AdminTool and can't find an account for the fraud claimant. What macro do you use?",
-      "options": [
-        "#Kikoff::CA Offboarding::Fraud Claim Duplicate Account",
-        "#Kikoff::CA Offboarding::Not Fraud",
-        "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
-        "#Kikoff::CA Offboarding::Fraud Escalated"
-      ],
-      "correct": 2,
-      "explanation": "When no account is found for the claimant, use #Kikoff::CA Offboarding::Fraud Claim No Account Found.",
+      "explanation": "For all live calls regarding fraud, agents must use the #Kikoff::Offboarding::Fraud Claim Voice Script to ensure compliance with the triage process[cite: 855, 856].",
       "category": "Macros"
     },
     {
       "type": "mc",
-      "question": "After investigating, you determine it's NOT fraud. What macro should you apply?",
+      "question": "A customer is calling from a phone number NOT on file and cannot be verified. Which macro should be used to follow up after the call?",
       "options": [
-        "#Kikoff::CA Offboarding::Fraud Claim Voice Script",
-        "#Kikoff::CA Offboarding::Fraud Escalated",
         "#Kikoff::CA Offboarding::Not Fraud",
-        "#Kikoff::CA Offboarding::Internal Note Fraud Escalation"
+        "#Kikoff::Offboarding::Fraud Claim Duplicate Account",
+        "#Kikoff::Offboarding::Fraud Voice Outbound Email",
+        "#Kikoff::CA Offboarding::Fraud Claim No Account Found"
       ],
       "correct": 2,
-      "explanation": "If the investigation determines it's not fraud, apply #Kikoff::CA Offboarding::Not Fraud.",
+      "explanation": "If a user cannot be verified over the phone, you must send the #Kikoff::Offboarding::Fraud Voice Outbound Email to request identifying details and transaction screenshots[cite: 860, 869, 871].",
       "category": "Macros"
     },
     {
       "type": "scenario",
-      "question": "A fraud case is too complex for you to handle. What should you do?",
-      "options": [
-        "Close the account immediately",
-        "Tell the customer to contact their bank",
-        "Escalate using Fraud Escalated macro and Internal Note Fraud Escalation",
-        "Ask the customer to call back later"
-      ],
-      "correct": 2,
-      "explanation": "Complex fraud cases should be escalated using the Fraud Escalated macro with an Internal Note Fraud Escalation for tracking.",
-      "category": "Escalation"
-    },
-    {
-      "type": "mc",
-      "question": "A fraud claimant appears to have a duplicate account. Which macro should you use?",
+      "question": "You search AdminTool and find no account matching the claimant's information. Which macro do you send to request an Affidavit of Identity Theft?",
       "options": [
         "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
-        "#Kikoff::CA Offboarding::Fraud Claim Duplicate Account",
         "#Kikoff::CA Offboarding::Not Fraud",
-        "#Kikoff::CA Offboarding::Fraud Claim Voice Script"
+        "#Kikoff::CA Offboarding::Fraud Escalated",
+        "#Kikoff::Offboarding::Fraud Voice Outbound Email"
       ],
-      "correct": 1,
-      "explanation": "When a duplicate account is found during a fraud investigation, use #Kikoff::CA Offboarding::Fraud Claim Duplicate Account.",
+      "correct": 0,
+      "explanation": "When no account is found, use #Kikoff::CA Offboarding::Fraud Claim No Account Found. This macro includes the required Affidavit of Identity Theft attachment[cite: 888, 893].",
       "category": "Macros"
     },
     {
       "type": "mc",
-      "question": "What is the correct order of steps in the fraud claims workflow?",
+      "question": "A customer forgot they opened an account, and you find a duplicate profile. Which macro guides them to use 'Forgot email' to regain access?",
       "options": [
-        "Close account \u2192 Authenticate \u2192 Investigate",
-        "Authenticate \u2192 Search AdminTool \u2192 Determine fraud/not fraud \u2192 Apply macro",
-        "Apply macro \u2192 Authenticate \u2192 Search AdminTool",
-        "Search AdminTool \u2192 Send email \u2192 Close account"
+        "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
+        "#Kikoff::Offboarding::Fraud Claim Duplicate Account",
+        "#Kikoff::Offboarding::Fraud Claim Unreported Account",
+        "#Kikoff::CA Offboarding::Not Fraud"
       ],
       "correct": 1,
-      "explanation": "The correct workflow is: Authenticate the customer \u2192 Search AdminTool \u2192 Determine if it's fraud or not \u2192 Apply the appropriate macro.",
-      "category": "Fraud Process"
+      "explanation": "The #Kikoff::Offboarding::Fraud Claim Duplicate Account macro explains that only one account is allowed and helps the user recover their original login[cite: 904, 910].",
+      "category": "Macros"
     },
     {
       "type": "mc",
-      "question": "When handling a fraud claim via voice call, which macro should you use to follow the script?",
+      "question": "If an account has not yet been reported to credit bureaus, which macro should you use to offer deactivation without escalation?",
       "options": [
-        "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
-        "#Kikoff::CA Offboarding::Fraud Claim Voice Script",
+        "#Kikoff::Offboarding::Fraud Claim Duplicate Account",
+        "#Kikoff::Offboarding::Fraud Claim Unreported Account",
         "#Kikoff::CA Offboarding::Not Fraud",
         "#Kikoff::CA Offboarding::Fraud Escalated"
       ],
       "correct": 1,
-      "explanation": "For voice fraud claims, use the #Kikoff::CA Offboarding::Fraud Claim Voice Script to guide your conversation.",
+      "explanation": "Use #Kikoff::Offboarding::Fraud Claim Unreported Account for profiles opened in the current month or those with no open accounts[cite: 917, 919, 921].",
+      "category": "Macros"
+    },
+    {
+      "type": "scenario",
+      "question": "Identity Theft Score is < 500 and all PII categories match perfectly. Which macro is used to inform the user that the information was verified at sign-up?",
+      "options": [
+        "#Kikoff::CA Offboarding::Fraud Escalated",
+        "#Kikoff::CA Offboarding::Not Fraud",
+        "#Kikoff::Offboarding::Fraud Claim Unreported Account",
+        "#Kikoff::CA Offboarding::Fraud Claim No Account Found"
+      ],
+      "correct": 1,
+      "explanation": "If the risk scores are low and PII matches, use the #Kikoff::CA Offboarding::Not Fraud macro to deny the claim while offering account closure[cite: 948, 949, 953].",
       "category": "Macros"
     },
     {
       "type": "mc",
-      "question": "After a voice fraud call, what should you send the customer?",
+      "question": "When a case is too complex for Tier 1 and requires a 10-day specialist review, which macro should be sent to the customer?",
       "options": [
-        "A screenshot of their account",
-        "An outbound email using the Fraud Voice Outbound Email template",
-        "Nothing \u2014 voice calls don't need follow-up",
-        "A link to reset their password"
+        "#Kikoff::CA Offboarding::Fraud Claim No Account Found",
+        "#Kikoff::CA Offboarding::Not Fraud",
+        "#Kikoff::CA Offboarding::Fraud Escalated",
+        "#Kikoff::Offboarding::Internal Note Fraud Escalation"
+      ],
+      "correct": 2,
+      "explanation": "The #Kikoff::CA Offboarding::Fraud Escalated macro notifies the customer that their case is with the internal fraud team and may require an Affidavit[cite: 959, 960, 963].",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "Which internal macro MUST be applied to the ticket when moving a case to the BO-Fraud Team?",
+      "options": [
+        "#Kikoff::Offboarding::Fraud Claim Voice Script",
+        "#Kikoff::Offboarding::Internal Note Fraud Escalation",
+        "#Kikoff::CA Offboarding::Not Fraud",
+        "#Kikoff::Offboarding::Fraud Voice Outbound Email"
       ],
       "correct": 1,
-      "explanation": "Send the customer an outbound email using the #Kikoff::CA Offboarding::Fraud Voice Outbound Email template.",
-      "category": "Fraud Process"
+      "explanation": "Agents must apply the #Kikoff::Offboarding::Internal Note Fraud Escalation macro to document the case details for the fraud team[cite: 969, 970].",
+      "category": "Macros"
     }
   ]
 };
