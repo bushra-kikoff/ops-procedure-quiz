@@ -75,8 +75,7 @@
     <h1 id="quizTitle">Goodwill Adjustment Procedures</h1>
     <div class="meta">
       <span>Credit Account</span>
-      <span>Difficulty: Easy</span>
-      <span id="questionCountMeta">5 Questions</span>
+      <span id="questionCountMeta">7 Questions</span>
     </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -85,9 +84,8 @@
     <h2>Ready to test your knowledge?</h2>
     <p>This quiz covers the <strong>Goodwill Adjustment Procedures</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
     <div class="start-info">
-      <div class="start-info-item"><div class="num" id="totalQNum">5</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num" id="totalQNum">7</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
-      <div class="start-info-item"><div class="num" id="difficultyDisplay">Easy</div><div class="lbl">Difficulty</div></div>
     </div>
     <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
   </div>
@@ -119,72 +117,98 @@
 <script>
 // QUIZ DATA - Replace this with actual quiz data
 const QUIZ_DATA = {
-  "title": "Goodwill Adjustment Procedures",
+  "title": "Goodwill Adjustment (GWA) Procedures",
   "questions": [
     {
       "type": "mc",
-      "question": "What is the purpose of a goodwill adjustment?",
+      "question": "Which of the following scenarios is generally INELIGIBLE for a goodwill adjustment according to Kikoff policy?",
       "options": [
-        "To give the customer a refund",
-        "To remove negative marks from a credit report as a courtesy",
-        "To upgrade the customer's plan",
-        "To close the customer's account"
+        "Temporary unemployment with supporting records",
+        "A legally recorded Bankruptcy or dismissed filing",
+        "Hospitalization during the month of the late payment",
+        "Incarceration with official documentation"
       ],
       "correct": 1,
-      "explanation": "Goodwill adjustments are requests to remove negative marks (like late payments) from a customer's credit report as a courtesy gesture.",
-      "category": "Knowledge"
+      "explanation": "Legally recorded events like Bankruptcy cannot be reversed and are generally ineligible for goodwill adjustments[cite: 798].",
+      "category": "Eligibility"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer provides a doctor's note for a hardship. How do you verify that the document dates align with the specific months they were late?",
+      "options": [
+        "Check the 'Opened Date' on the user's AdminTool token",
+        "Download the Payment History PDF to identify when payments were missed and compare the dates",
+        "Ask the customer to highlight the dates on their own statement",
+        "Assume they align if the customer provided a written explanation"
+      ],
+      "correct": 1,
+      "explanation": "You must download the Payment History PDF to identify exactly when payments were late and confirm those dates align with the provided documentation.",
+      "category": "Verification Process"
     },
     {
       "type": "mc",
-      "question": "When a customer requests a goodwill adjustment, what macro do you use first?",
+      "question": "What is the correct escalation flow for a Goodwill Adjustment request after T1/T2 receives and verifies the documentation?",
       "options": [
-        "#Kikoff::CA::Goodwill Adjustment Accepted",
-        "#Kikoff::CA::Goodwill Adjustment Request",
-        "#Kikoff::CA::Goodwill Adjustment Declined",
-        "#Kikoff::CA::Credit Reporting Issues"
+        "T1 solves the ticket immediately after receiving documents",
+        "T1 verifies eligibility (if not already escalated to T2), sends the 'Documents Received' macro, and leaves the ticket OPEN for T3 review",
+        "T1 sends the 'Accepted' macro and escalates to T2 for the bureau update",
+        "T1 escalates to T2, and T2 sends the final 'Accepted' or 'Declined' response"
       ],
       "correct": 1,
-      "explanation": "Start with #Kikoff::CA::Goodwill Adjustment Request to initiate the process and request necessary documentation.",
-      "category": "Macros"
+      "explanation": "T1/T2 verifies documents and sends the 'Documents Received' macro. T3 handles the final review and all future communications (Accept/Decline)[cite: 810, 811, 827].",
+      "category": "Flow & Escalations"
+    },
+    {
+      "type": "scenario",
+      "question": "You have received the customer's documents and verified they are eligible for a formal review. How should you submit the ZenDesk ticket?",
+      "options": [
+        "Submit the ticket as SOLVED",
+        "Submit the ticket as OPEN",
+        "Submit the ticket as PENDING",
+        "Submit the ticket as ON-HOLD"
+      ],
+      "correct": 1,
+      "explanation": "When using the 'Goodwill Adjustment Documents Received' macro, you must submit the ticket as OPEN[cite: 811].",
+      "category": "Process"
     },
     {
       "type": "mc",
-      "question": "A customer submits documents for a goodwill adjustment but they're not the right type. Which macro should you use?",
+      "question": "A customer keeps has sent a comprehensive statement but they have not attached any documents, how should you reply?",
       "options": [
-        "#Kikoff::CA::Goodwill Adjustment Request",
-        "#Kikoff::CA::Goodwill Adjustment Ineligible Documents",
-        "#Kikoff::CA::Goodwill Adjustment Declined",
-        "#Kikoff::CA::Goodwill Adjustment Accepted"
-      ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::CA::Goodwill Adjustment Ineligible Documents to let the customer know their documents don't qualify and request the correct ones.",
-      "category": "Macros"
-    },
-    {
-      "type": "mc",
-      "question": "A goodwill adjustment has been approved after review. Which macro do you apply?",
-      "options": [
-        "#Kikoff::CA::Goodwill Adjustment Request",
-        "#Kikoff::CA::Goodwill Adjustment Documents Received",
-        "#Kikoff::CA::Goodwill Adjustment Accepted",
-        "#Kikoff::CA::Goodwill Adjustment Declined"
+        "Escalate to T2",
+        "Send #Kikoff::CA::Goodwill Adjustment Ineligible Documents and escalate to T2",
+        "Send #Kikoff::CA::Goodwill Adjustment Ineligible Documents and keep within T1",
+        "Send the #Kikoff::CA::Goodwill Adjustment Documents Received and escalate"
       ],
       "correct": 2,
-      "explanation": "Use #Kikoff::CA::Goodwill Adjustment Accepted to notify the customer that the adjustment has been approved.",
+      "explanation": "We should not escalate until we have received the eligible documentation. You must use the #Kikoff::CA::Goodwill Adjustment Ineligible Documents macro and, unless other circumstances apply, keep it within Tier 1 until we have verified their documentation.",
+      "category": "Flow & Escalations"
+    },
+    {
+      "type": "mc",
+      "question": "Which macro should T1 send if the customer provides documents that do not match the timeframe of the late payments?",
+      "options": [
+        "#Kikoff::CA::Goodwill Adjustment Declined",
+        "#Kikoff::CA::Goodwill Adjustment Ineligible Documents",
+        "#Kikoff::CA::Goodwill Adjustment Request",
+        "#Kikoff::CA::Adjustment Documents Received"
+      ],
+      "correct": 1,
+      "explanation": "If documentation doesn't meet requirements (such as matching the timeframe), send the #Kikoff::CA::Goodwill Adjustment Ineligible Documents macro.",
       "category": "Macros"
     },
     {
       "type": "mc",
-      "question": "What is the correct workflow order for goodwill adjustments?",
+      "question": "Repeated delinquencies without extenuating circumstances are categorized as what, and are they eligible for a GWA?",
       "options": [
-        "Accept \u2192 Request docs \u2192 Review \u2192 Notify",
-        "Request \u2192 Receive docs \u2192 Review eligibility \u2192 Accept or Decline",
-        "Decline first \u2192 If customer pushes back \u2192 Accept",
-        "Escalate to T3 \u2192 Wait for decision \u2192 Notify customer"
+        "Financial hardship; Yes",
+        "Habitual late payments; No",
+        "Regulatory reporting; Yes",
+        "Goodwill gesture; Yes"
       ],
       "correct": 1,
-      "explanation": "The correct workflow: Send Goodwill Adjustment Request \u2192 Receive documents \u2192 Review eligibility \u2192 Accept or Decline based on review.",
-      "category": "Process"
+      "explanation": "Habitual late payments without extenuating circumstances are ineligible for a goodwill adjustment[cite: 799].",
+      "category": "Eligibility"
     }
   ]
 };
