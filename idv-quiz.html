@@ -75,8 +75,7 @@
     <h1 id="quizTitle">Identity Verification (IDV)</h1>
     <div class="meta">
       <span>Onboarding</span>
-      <span>Difficulty: Medium</span>
-      <span id="questionCountMeta">8 Questions</span>
+      <span id="questionCountMeta">11 Questions</span>
     </div>
   </div>
   <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -85,9 +84,8 @@
     <h2>Ready to test your knowledge?</h2>
     <p>This quiz covers the <strong>Identity Verification (IDV)</strong> procedure. Answer each question carefully - you'll get immediate feedback after each answer.</p>
     <div class="start-info">
-      <div class="start-info-item"><div class="num" id="totalQNum">8</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num" id="totalQNum">11</div><div class="lbl">Questions</div></div>
       <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
-      <div class="start-info-item"><div class="num" id="difficultyDisplay">Med</div><div class="lbl">Difficulty</div></div>
     </div>
     <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
   </div>
@@ -119,111 +117,150 @@
 <script>
 // QUIZ DATA - Replace this with actual quiz data
 const QUIZ_DATA = {
-  "title": "Identity Verification (IDV)",
+  "title": "Identity Verification (IDV) Mastery",
   "questions": [
     {
       "type": "mc",
-      "question": "A customer has a frozen credit file. What macro should you use?",
+      "question": "What is the most effective way to identify every bad code associated with a customer's IDV failure?",
       "options": [
-        "#Kikoff::CA Onboarding::Dead End Flow",
-        "#Kikoff::CA Onboarding::Frozen File / Credit Freeze",
-        "#Kikoff::CA Onboarding::Sent to Retry",
-        "#Kikoff::CA Onboarding::Dead End Pushback"
+        "Only look at the error codes visible in the IDV section",
+        "Only look at the most recent reverification attempts",
+        "Look at error codes in the IDV section and reverification attempts",
+        "Check IDV/Reverification sections and use Cmd/Ctrl + F in the Raw data section"
       ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::CA Onboarding::Frozen File / Credit Freeze to guide the customer on unfreezing their credit.",
-      "category": "IDV Failures"
+      "correct": 3,
+      "explanation": "To ensure no failure reasons are missed, agents should check the IDV and reverification sections and use keyboard shortcuts (Cmd/Ctrl + F) to search the Raw data.",
+      "category": "Troubleshooting"
     },
     {
       "type": "mc",
-      "question": "What does 'Dead End Flow' mean in the IDV context?",
+      "question": "A customer fails IDV with code 4001 (SSN reported deceased). Can this code be overridden or manually passed?",
       "options": [
-        "The customer's account is closed",
-        "The customer cannot proceed with sign-up due to verification failure",
-        "The customer needs to pay more",
-        "The system is down"
-      ],
-      "correct": 1,
-      "explanation": "Dead End Flow means the customer cannot proceed with sign-up due to identity verification failure.",
-      "category": "IDV Failures"
-    },
-    {
-      "type": "mc",
-      "question": "A customer has an Active Duty military alert on file. What macro applies?",
-      "options": [
-        "#Kikoff::CA Onboarding::Extended Fraud Victim Alert on File",
-        "#Kikoff::CA Onboarding::Active Duty Alert on File",
-        "#Kikoff::CA Onboarding::Dead End Flow",
-        "#Kikoff::CA Onboarding::Sent to Retry"
-      ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::CA Onboarding::Active Duty Alert on File for customers with active military duty alerts.",
-      "category": "IDV Failures"
-    },
-    {
-      "type": "mc",
-      "question": "A customer's IDV failure appears to be retryable. Which macro should you use?",
-      "options": [
-        "#Kikoff::CA Onboarding::Dead End Flow",
-        "#Kikoff::CA Onboarding::Dead End Pushback",
-        "#Kikoff::CA Onboarding::Sent to Retry",
-        "#Kikoff::CA Onboarding::Frozen File / Credit Freeze"
+        "Yes, if the customer provides a birth certificate",
+        "Yes, by escalating to Tier 3",
+        "No, this is a 'Bad Code' and is a dead end for the user",
+        "Yes, if the customer has an Ultimate plan"
       ],
       "correct": 2,
-      "explanation": "If the failure is retryable, use #Kikoff::CA Onboarding::Sent to Retry to let the customer try again.",
-      "category": "IDV Failures"
+      "explanation": "Bad codes like 4001 are considered a dead end and cannot be overridden or manually passed[cite: 423, 424, 435].",
+      "category": "IDV Bad Codes"
     },
     {
-      "type": "mc",
-      "question": "What should you always create when a customer experiences an IDV failure?",
+      "type": "scenario",
+      "question": "A customer fails IDV due to a 'Bad Code' but explicitly contacts you stating they 'mistyped' their information. What is the correct protocol?",
       "options": [
-        "A T3 escalation ticket",
-        "An IDV Fail Internal Note for tracking",
-        "A new account for the customer",
-        "A refund request"
+        "Strictly follow the 'Bad Code' rule and send the Dead End macro",
+        "Disclose the specific error so they can fix it on their next try",
+        "Allow them to retry since they explicitly mentioned a typo",
+        "Prompt them to claim a typo so you can reset the account"
       ],
-      "correct": 1,
-      "explanation": "Always create an IDV Fail Internal Note (#Kikoff::CA Onboarding::IDV Fail Internal Note) for tracking and documentation.",
+      "correct": 2,
+      "explanation": "If a customer explicitly mentions a typo, you can allow a retry[cite: 427, 431]. However, you must never disclose the failure reason or prompt them to claim a typo[cite: 428].",
       "category": "Process"
     },
     {
       "type": "mc",
-      "question": "A customer has an Extended Fraud Victim Alert on their credit file. What macro should you use?",
+      "question": "At what threshold does a Sentilink Score indicate that a customer will NOT pass Identity Verification?",
       "options": [
-        "#Kikoff::CA Onboarding::Active Duty Alert on File",
-        "#Kikoff::CA Onboarding::Dead End Flow",
-        "#Kikoff::CA Onboarding::Extended Fraud Victim Alert on File",
-        "#Kikoff::CA Onboarding::Sent to Retry"
+        "Score: 500",
+        "Score: 650",
+        "Score: 700",
+        "Score: 800"
+      ],
+      "correct": 1,
+      "explanation": "A Sentilink Score of 650 or higher is an automatic dead end[cite: 481].",
+      "category": "Scores"
+    },
+    {
+      "type": "mc",
+      "question": "Which of these codes allows you to EXPLICITLY tell the customer that a freeze or alert on their file is blocking the application?",
+      "options": [
+        "Code 5003 (Multiple Invalid SSNs)",
+        "Code 1501 (Suspicious Address)",
+        "Code 9022 (Suppressed/Frozen File)",
+        "Code 4551 (Invalid SSN)"
       ],
       "correct": 2,
-      "explanation": "Use #Kikoff::CA Onboarding::Extended Fraud Victim Alert on File for customers with fraud victim alerts.",
+      "explanation": "For codes like 9022, 9006, and 9004, we can directly mention the freeze or alert to the customer[cite: 483, 484, 486].",
       "category": "IDV Failures"
     },
     {
       "type": "scenario",
-      "question": "A customer using a commercial address fails IDV but could potentially pass with the right flow. Which macro should you check first?",
+      "question": "You see code 0500 (Commercial Address). After a Google search, you verify the address is residential. What is the correct AdminTool action?",
       "options": [
-        "#Kikoff::CA Onboarding::Dead End Flow",
-        "#Kikoff::CA Onboarding::Commercial Address Pass",
-        "#Kikoff::CA Onboarding::Sent to Retry",
-        "#Kikoff::CA Onboarding::Frozen File / Credit Freeze"
+        "Click 'Retry' in the left column",
+        "Go to 'Review' on the left bar and change 'Pass IDV?' to 'Yes'",
+        "Send the 'Sent to Retry' macro immediately",
+        "Simply add an internal note and solve the ticket"
       ],
       "correct": 1,
-      "explanation": "For commercial address cases, first check if they can pass using #Kikoff::CA Onboarding::Commercial Address Pass. If not, use Commercial Address Dead End Flow.",
+      "explanation": "If verified as residential, go to 'Review,' set 'Pass IDV?' to 'Yes,' and include the proof link in the reason field[cite: 555, 556, 557].",
+      "category": "Commercial Address"
+    },
+    {
+      "type": "mc",
+      "question": "A customer hit both code 5003 (Bad Code) and code 0500 (Commercial Address). What is the correct action?",
+      "options": [
+        "Follow the Commercial Address flow since it has an override path",
+        "The 'Bad Code' (5003) supersedes the override path; send the dead end macro",
+        "Send them to retry twice",
+        "Ask for a utility bill to manually verify the account"
+      ],
+      "correct": 1,
+      "explanation": "Bad codes always supersede other codes, even if the other codes have an override path[cite: 458, 463].",
+      "category": "IDV Bad Codes"
+    },
+    {
+      "type": "mc",
+      "question": "How many times are you permitted to reset a customer's application to 'Retry' if they don't have a bad code or high score?",
+      "options": [
+        "One time only",
+        "A total of two times",
+        "Three times",
+        "Until they pass"
+      ],
+      "correct": 1,
+      "explanation": "Users are allowed a total of two retries. If they fail after the second retry, you must send the dead end flow[cite: 576].",
+      "category": "Process"
+    },
+    {
+      "type": "mc",
+      "question": "A customer with code 9022 asks if a 'temporary lift' of their credit freeze is enough. How do you respond?",
+      "options": [
+        "Yes, as long as it lasts 24 hours",
+        "No, they must fully remove the freeze at all three bureaus",
+        "Only if they lift it at Experian",
+        "Yes, a 48-hour lift is sufficient"
+      ],
+      "correct": 1,
+      "explanation": "A temporary lift will not work; the freeze must be fully removed at all three bureaus[cite: 491, 537].",
       "category": "IDV Failures"
     },
     {
-      "type": "scenario",
-      "question": "A customer pushes back after being told they can't sign up due to IDV failure. What macro handles this?",
+      "type": "mc",
+      "question": "What is the required Identity Theft Score threshold for sending the dead end macro?",
       "options": [
-        "#Kikoff::CA Onboarding::Sent to Retry",
-        "#Kikoff::CA Onboarding::Dead End Pushback",
-        "#Kikoff::General::T3 Escalation",
-        "#Kikoff::CA Onboarding::IDV Fail Internal Note"
+        "Score: 600",
+        "Score: 650",
+        "Score: 700",
+        "Score: 750"
       ],
-      "correct": 1,
-      "explanation": "Use #Kikoff::CA Onboarding::Dead End Pushback when a customer pushes back on a dead end IDV failure.",
-      "category": "IDV Failures"
+      "correct": 2,
+      "explanation": "An Identity Theft Score of 700 or higher is an automatic dead end[cite: 482].",
+      "category": "Scores"
+    },
+   {
+      "type": "scenario",
+      "question": "A customer pushes back after a dead end failure. You send the 'Dead End Pushback' macro. What information should you NEVER provide?",
+      "options": [
+        "General support contact info",
+        "The Kikoff website URL",
+        "Any additional details or specific reasons for the failure",
+        "The name of the Kikoff CEO"
+      ],
+      "correct": 2,
+      "explanation": "When a customer pushes back, we inform them we cannot provide any additional details at this time. [cite: 468, 469]",
+      "category": "Process"
     }
   ]
 };
