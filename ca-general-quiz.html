@@ -64,4 +64,356 @@
   .start-info { display: flex; gap: 24px; justify-content: center; margin-bottom: 32px; flex-wrap: wrap; }
   .start-info-item { text-align: center; }
   .start-info-item .num { font-size: 28px; font-weight: 800; color: #1a1a2e; }
-  .start-info-item .lbl { font-size: 12px; color: #999; text-transform: uppercase; letter-
+  .start-info-item .lbl { font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 0.5px; }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+  <div class="quiz-header">
+    <h1 id="quizTitle">Credit Account (CA) General</h1>
+    <div class="meta">
+      <span>Lifecycle Training</span>
+      <span id="questionCountMeta">14 Questions</span>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+
+  <div id="startScreen" class="start-screen">
+    <h2>CA Knowledge Check</h2>
+    <p>This quiz covers the <strong>Credit Account General</strong> procedures, including plan perks, reporting, and troubleshooting expired subscriptions.</p>
+    <div class="start-info">
+      <div class="start-info-item"><div class="num" id="totalQNum">14</div><div class="lbl">Questions</div></div>
+      <div class="start-info-item"><div class="num">80%</div><div class="lbl">To Pass</div></div>
+    </div>
+    <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+  </div>
+
+  <div id="questionScreen" class="quiz-body hidden">
+    <div class="question-counter" id="questionCounter"></div>
+    <div class="question-type" id="questionType"></div>
+    <div class="question-text" id="questionText"></div>
+    <div class="options" id="optionsContainer"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+    </div>
+  </div>
+
+  <div id="resultsScreen" class="results hidden">
+    <div class="results-icon" id="resultsIcon"></div>
+    <h2 id="resultsTitle"></h2>
+    <div class="score" id="resultsScore"></div>
+    <div class="detail" id="resultsDetail"></div>
+    <div class="results-breakdown" id="resultsBreakdown"></div>
+    <div class="copy-code" id="copyCode" onclick="copyResults()"></div>
+    <div class="btn-row" style="justify-content:center;margin-top:24px;">
+      <button class="btn btn-secondary" onclick="retakeQuiz()">Retake Quiz</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUIZ_DATA = {
+  "title": "Credit Account General",
+  "questions": [
+    {
+      "type": "mc",
+      "question": "What is the primary reported tradeline amount for a customer on the Premium Plan?",
+      "options": ["$750", "$2,500", "$3,500", "$5,000"],
+      "correct": 1,
+      "explanation": "The Premium Plan offers a $2,500 reported tradeline[cite: 673, 696].",
+      "category": "Plans"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer is upset because they cannot spend their tradeline at a local grocery store. What is the correct educational response?",
+      "options": [
+        "They need to upgrade to Ultimate to use it elsewhere.",
+        "The tradeline is only for use in the Kikoff Store and cannot be spent outside.",
+        "They can use it anywhere after the first 3 months.",
+        "It is a traditional credit card that should work anywhere."
+      ],
+      "correct": 1,
+      "explanation": "The Kikoff Credit Account is a credit-building subscription; users cannot spend the tradeline outside of Kikoff[cite: 662, 663, 692].",
+      "category": "Product Knowledge"
+    },
+    {
+      "type": "mc",
+      "question": "When does Kikoff report payment activities to the credit bureaus?",
+      "options": [
+        "The last day of every month",
+        "Every Friday",
+        "The first business day of every month",
+        "Immediately after every payment"
+      ],
+      "correct": 2,
+      "explanation": "Kikoff reports to the bureaus on the first business day of every month[cite: 668, 708].",
+      "category": "Reporting"
+    },
+    {
+      "type": "mc",
+      "question": "If a user's subscription status says 'EXPIRED' in Credit Account Settings, what feature will they lose access to?",
+      "options": [
+        "The ability to make a payment",
+        "Their full credit report display in the app",
+        "Access to the Kikoff store",
+        "The one-month grace period"
+      ],
+      "correct": 1,
+      "explanation": "Without an active subscription, Kikoff is unable to access the full credit report and display external accounts in the app[cite: 771, 775].",
+      "category": "Subscriptions"
+    },
+    {
+      "type": "scenario",
+      "question": "A user's account was closed due to a 'non-activated sweep.' How can they reopen their Credit Account?",
+      "options": [
+        "They must call support to have it manually overridden.",
+        "They cannot reopen it for 6 months.",
+        "Log into the app and click 'Get Started' under the Credit Account tab.",
+        "They must apply for a completely new profile."
+      ],
+      "correct": 2,
+      "explanation": "A non-activated sweep happens when no payments are made. Users can reopen by clicking 'Get Started' in the app[cite: 741, 742, 746, 747].",
+      "category": "Deactivation"
+    },
+    {
+      "type": "mc",
+      "question": "Which plan includes $1M identity theft insurance and personal data protection?",
+      "options": ["Basic Plan", "Premium Plan", "Ultimate Plan", "All Plans"],
+      "correct": 2,
+      "explanation": "Identity theft insurance and data protection are perks of the Ultimate Plan[cite: 673, 696].",
+      "category": "Plans"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer made a payment on the 1st of the month but doesn't see it on their credit report on the 5th. What is the standard processing time?",
+      "options": [
+        "24 hours",
+        "Up to 2 weeks",
+        "30 days",
+        "It is reported instantly"
+      ],
+      "correct": 1,
+      "explanation": "Bureaus can take up to 2 weeks to process and reflect reported information[cite: 669, 709].",
+      "category": "Reporting"
+    },
+    {
+      "type": "mc",
+      "question": "Kikoff informs bureaus that an account is deactivated due to information received from the bureaus themselves. Which macro should be used?",
+      "options": [
+        "CA Offboarding::Payment Dispute",
+        "CA Offboarding::Non-activated Sweep",
+        "CA Offboarding::Block/Deletion",
+        "CA Offboarding::Closed due to Bankruptcy"
+      ],
+      "correct": 2,
+      "explanation": "Use the #Kikoff::CA Offboarding::Block/Deletion macro when deactivation is based on bureau-provided information[cite: 749, 750].",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "What is the monthly payment for the Ultimate Plan?",
+      "options": ["$5", "$12", "$20", "$35"],
+      "correct": 3,
+      "explanation": "The Ultimate Plan costs $35 monthly for 12 months[cite: 673, 696].",
+      "category": "Plans"
+    },
+    {
+      "type": "scenario",
+      "question": "A customer is confused about why their account was closed. AdminTool shows a 'payment dispute' from their bank. Can they reopen their account?",
+      "options": [
+        "Yes, if they repay the disputed amount.",
+        "No, Kikoff will be unable to resume or reopen the account in the near future.",
+        "Yes, but only on the Basic plan.",
+        "Yes, after a 90-day waiting period."
+      ],
+      "correct": 1,
+      "explanation": "Accounts closed due to payment disputes are ineligible for reopening in the near future[cite: 755, 757, 759].",
+      "category": "Deactivation"
+    },
+    {
+      "type": "mc",
+      "question": "A customer insists on having Kikoff removed from their credit report. Which macro explains our regulatory obligation to report late payments?",
+      "options": [
+        "#Kikoff::CA::Goodwill Adjustment",
+        "#Kikoff::CA::Unable to Remove from Credit Report",
+        "#Kikoff::CA::Block/Deletion",
+        "#Kikoff::CA Offboarding::Manual Closure"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::CA::Unable to Remove from Credit Report to explain that we cannot remove valid reporting due to regulatory obligations[cite: 712, 713, 714].",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "Which macro should be used if a customer asks why their score is different on Kikoff compared to other credit bureaus?",
+      "options": [
+        "#Kikoff::CA::New Account Credit Score Drop",
+        "#Kikoff::CA::Score Display Inquiry",
+        "#Kikoff::CA::Discrepancy Investigation",
+        "#Kikoff::CA::General Inquiry"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::CA::Score Display Inquiry for questions about score differences between Kikoff and other bureaus[cite: 716, 718].",
+      "category": "Macros"
+    },
+    {
+      "type": "mc",
+      "question": "A customer notices their score dropped right after signing up for Kikoff. Which macro addresses this common occurrence?",
+      "options": [
+        "#Kikoff::CA::Unable to Remove from Credit Report",
+        "#Kikoff::CA::New Account Credit Score Drop",
+        "#Kikoff::CA::Score Display Inquiry",
+        "#Kikoff::CA::Reporting Timeline"
+      ],
+      "correct": 1,
+      "explanation": "Use #Kikoff::CA::New Account Credit Score Drop for initial score decreases related to opening a new account[cite: 720, 721].",
+      "category": "Macros"
+    },
+    {
+      "type": "scenario",
+      "question": "A user complains they can't access Premium features. How do you verify if their subscription is expired?",
+      "options": [
+        "Check AdminTool for a 'Dead End' code.",
+        "Check their bank link status in CST.",
+        "Impersonate the user and go to Credit Account -> Settings -> Orders & Subscriptions.",
+        "Check the reporting timeline in the Zendesk ticket."
+      ],
+      "correct": 2,
+      "explanation": "To check subscription status, impersonate the user and navigate to Credit Account Settings -> Orders & Subscriptions to look for an 'EXPIRED' or 'INACTIVE' status[cite: 770, 771].",
+      "category": "Technical Troubleshooting"
+    }
+  ]
+};
+
+let currentQuestion = 0;
+let score = 0;
+let answers = [];
+let startTime;
+
+function startQuiz() {
+  document.getElementById('startScreen').classList.add('hidden');
+  document.getElementById('questionScreen').classList.remove('hidden');
+  startTime = new Date();
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = QUIZ_DATA.questions[currentQuestion];
+  const total = QUIZ_DATA.questions.length;
+  document.getElementById('questionCounter').textContent = `Question ${currentQuestion + 1} of ${total}`;
+  document.getElementById('questionType').textContent = q.type === 'mc' ? 'Multiple Choice' : 'Scenario';
+  document.getElementById('questionType').className = `question-type ${q.type}`;
+  document.getElementById('questionText').textContent = q.question;
+  document.getElementById('progressFill').style.width = `${((currentQuestion) / total) * 100}%`;
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('nextBtn').disabled = true;
+
+  const container = document.getElementById('optionsContainer');
+  container.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.options.forEach((opt, i) => {
+    const div = document.createElement('div');
+    div.className = 'option';
+    div.innerHTML = `<div class="option-letter">${letters[i]}</div><div>${opt}</div>`;
+    div.onclick = () => selectAnswer(i);
+    container.appendChild(div);
+  });
+}
+
+function selectAnswer(index) {
+  const q = QUIZ_DATA.questions[currentQuestion];
+  const options = document.querySelectorAll('.option');
+  const feedback = document.getElementById('feedback');
+  const isCorrect = index === q.correct;
+
+  options.forEach((opt, i) => {
+    opt.classList.add('disabled');
+    opt.onclick = null;
+    if (i === q.correct) opt.classList.add('correct');
+    if (i === index && !isCorrect) opt.classList.add('incorrect');
+  });
+
+  if (isCorrect) {
+    score++;
+    feedback.className = 'feedback correct show';
+    feedback.textContent = q.explanation || 'Correct!';
+  } else {
+    feedback.className = 'feedback incorrect show';
+    feedback.textContent = q.explanation || `Incorrect. The correct answer is ${['A','B','C','D'][q.correct]}.`;
+  }
+
+  answers.push({ question: currentQuestion + 1, correct: isCorrect, category: q.category || 'General' });
+  document.getElementById('nextBtn').disabled = false;
+  if (currentQuestion === QUIZ_DATA.questions.length - 1) {
+    document.getElementById('nextBtn').textContent = 'See Results';
+  }
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= QUIZ_DATA.questions.length) {
+    showResults();
+  } else {
+    showQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById('questionScreen').classList.add('hidden');
+  document.getElementById('resultsScreen').classList.remove('hidden');
+  document.getElementById('progressFill').style.width = '100%';
+
+  const total = QUIZ_DATA.questions.length;
+  const pct = Math.round((score / total) * 100);
+  const passed = pct >= 80;
+  const elapsed = Math.round((new Date() - startTime) / 1000);
+  const mins = Math.floor(elapsed / 60);
+  const secs = elapsed % 60;
+
+  document.getElementById('resultsIcon').textContent = passed ? '✅' : '❌';
+  document.getElementById('resultsTitle').textContent = passed ? 'Great job! You passed!' : 'Keep studying - you can do better!';
+  document.getElementById('resultsScore').textContent = `${pct}%`;
+  document.getElementById('resultsScore').className = `score ${passed ? 'pass' : 'fail'}`;
+  document.getElementById('resultsDetail').textContent = `${score} out of ${total} correct • ${mins}m ${secs}s`;
+
+  const categories = {};
+  answers.forEach(a => {
+    if (!categories[a.category]) categories[a.category] = { correct: 0, total: 0 };
+    categories[a.category].total++;
+    if (a.correct) categories[a.category].correct++;
+  });
+
+  let breakdownHTML = '<h3>Performance by Category</h3>';
+  Object.entries(categories).forEach(([cat, data]) => {
+    const catPct = Math.round((data.correct / data.total) * 100);
+    breakdownHTML += `<div class="breakdown-item"><span class="label">${cat}</span><span class="value">${data.correct}/${data.total} (${catPct}%)</span></div>`;
+  });
+  document.getElementById('resultsBreakdown').innerHTML = breakdownHTML;
+
+  const now = new Date().toISOString().split('T')[0];
+  const code = `QUIZ_RESULT | ${QUIZ_DATA.title} | ${now} | Score: ${score}/${total} (${pct}%) | ${passed ? 'PASS' : 'FAIL'}`;
+  document.getElementById('copyCode').textContent = code;
+}
+
+function copyResults() {
+  const el = document.getElementById('copyCode');
+  navigator.clipboard.writeText(el.textContent).then(() => {
+    el.classList.add('copied');
+    setTimeout(() => el.classList.remove('copied'), 2000);
+  });
+}
+
+function retakeQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  answers = [];
+  document.getElementById('resultsScreen').classList.add('hidden');
+  document.getElementById('startScreen').classList.remove('hidden');
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('nextBtn').textContent = 'Next';
+}
+</script>
+</body>
+</html>
