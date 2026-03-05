@@ -136,13 +136,13 @@ const QUIZ_DATA = {
       "type": "scenario",
       "question": "A customer is past the 45-day window but claims a technical bug or a back-reporting error warrants a refund. What is the correct flow for this escalation?",
       "options": [
-        "Process the refund immediately in AdminTool and then notify T3",
-        "Tell the user we cannot refund back-reporting errors under any circumstances",
+        "Escalate the case to T2 for verification, and then they will notify T3",
+        "Ask the user for proof of the issue/bug, then escalate the case to T2",
         "Ask the user for proof of the issue/bug, then escalate the case to T3",
         "Send the 'Extenuating Circumstance' macro and solve the ticket"
       ],
       "correct": 2,
-      "explanation": "For technical issues, bugs, or back-reporting refund requests, agents must first obtain proof from the user before escalating to Tier 3[cite: 1071, 1173, 1174].",
+      "explanation": "For technical issues, bugs, or back-reporting refund requests, agents must first obtain proof from the user before escalating STRAIGHT to Tier 3. No longer send it to T2 for verification.",
       "category": "Escalation Policy"
     },
     {
